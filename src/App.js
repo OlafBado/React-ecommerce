@@ -147,8 +147,8 @@ class App extends React.Component {
              
          })
         const check = isSame.includes(true) ? 'exists' : 'not exists'
-
         return check
+        
     } else {
         
     const productValues = product.selectedOptions.map(item => item.value)
@@ -238,6 +238,23 @@ setProductId = (id) => {
   })
 }
 
+calculateTotalQuantity = (items) => {
+    const totalQuantity = items.reduce((acc, cv) => {
+        acc = acc + cv.quantity
+        return acc
+    }, 0)
+    return totalQuantity
+}
+
+calculateTotalAmount = (items, currency, findAmount) => {
+    let totalAmount = items.reduce((acc, cv) => {
+        const amount = findAmount(cv, currency)
+        acc = acc + amount * cv.quantity
+        return Math.round(acc * 100) / 100
+    }, 0)
+    return totalAmount
+}
+
   render() {
     return (
       <>
@@ -256,6 +273,8 @@ setProductId = (id) => {
             incrementQuantity={this.incrementQuantity}
             decrementQuantity={this.decrementQuantity}
             items={this.state.cartItems}
+            calculateTotalQuantity={this.calculateTotalQuantity}
+            calculateTotalAmount={this.calculateTotalAmount}
         />
         <div className='container'>
           <Routes>
@@ -278,6 +297,8 @@ setProductId = (id) => {
                 incrementQuantity={this.incrementQuantity}
                 decrementQuantity={this.decrementQuantity}
                 items={this.state.cartItems}
+                calculateTotalQuantity={this.calculateTotalQuantity}
+                calculateTotalAmount={this.calculateTotalAmount}
              />} />
           </Routes>
         </div>

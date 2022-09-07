@@ -6,31 +6,23 @@ import { Link } from 'react-router-dom'
 class CartModal extends React.Component {
 
     render() {
-        const { currency } = this.props
-        let totalQuantity = this.props.items.reduce((acc, cv) => {
-            acc = acc + cv.quantity
-            return acc
-        }, 0)
-
-        let totalAmount = this.props.items.reduce((acc, cv) => {
-            //console.log(cv)
-            const amount = this.props.findAmount(cv, currency)
-            acc = acc + amount * cv.quantity
-            return Math.round(acc * 100) / 100
-        }, 0)
+        
+        const { items, currency, findAmount, openModal, incrementQuantity, decrementQuantity } = this.props
+        const totalQuantity = this.props.calculateTotalQuantity(items)
+        const totalAmount = this.props.calculateTotalAmount(items, currency, findAmount)
 
         return ReactDOM.createPortal(
             <>
-                <div onClick={() => this.props.openModal()} className='overlay-styles'></div>
+                <div onClick={() => openModal()} className='overlay-styles'></div>
                 <div className='cart-modal'>
                     <p>My Bag<span>, {totalQuantity} {totalQuantity === 1 ? 'item' : 'items'}</span></p>
                     <div className='cart-modal-items'>
                         <CartModalItem
-                            findAmount={this.props.findAmount}
-                            currency={this.props.currency}
-                            incrementQuantity={this.props.incrementQuantity}
-                            decrementQuantity={this.props.decrementQuantity}
-                            items={this.props.items}
+                            findAmount={findAmount}
+                            currency={currency}
+                            incrementQuantity={incrementQuantity}
+                            decrementQuantity={decrementQuantity}
+                            items={items}
                         />                       
                     </div>
                     <div className='cart-modal-description'>
@@ -38,7 +30,7 @@ class CartModal extends React.Component {
                         <p className='cart-modal-amount'>{currency}{totalAmount}</p>
                     </div>
                     <div className='cart-modal-buttons'>
-                        <Link to='/cart'>
+                        <Link to='/cart' onClick={() => openModal()}>
                             <Button
                                 weight={'600'}
                                 size={'14px'}

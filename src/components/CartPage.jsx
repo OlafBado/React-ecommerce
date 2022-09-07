@@ -10,17 +10,9 @@ class CartPage extends React.Component {
 
     render() {
 
-        const { currency } = this.props
-        let totalQuantity = this.props.items.reduce((acc, cv) => {
-            acc = acc + cv.quantity
-            return acc
-        }, 0)
-
-        let totalAmount = this.props.items.reduce((acc, cv) => {
-            const amount = this.props.findAmount(cv, currency)
-            acc = acc + amount * cv.quantity
-            return Math.round(acc * 100) / 100
-        }, 0)
+        const { currency, items, findAmount, incrementQuantity, decrementQuantity } = this.props
+        const totalQuantity = this.props.calculateTotalQuantity(items)
+        const totalAmount = this.props.calculateTotalAmount(items, currency, findAmount)
 
         return (
             <>
@@ -33,15 +25,15 @@ class CartPage extends React.Component {
                     CART
                 </Title>
                 <div className='cart-list'>
-                    {this.props.items.map((item, index) => {
+                    {items.map((item, index) => {
                         return (
                             <CartItem
                                 {...item}
                                 key={index}
-                                findAmount={this.props.findAmount}
-                                currency={this.props.currency}
-                                incrementQuantity={this.props.incrementQuantity}
-                                decrementQuantity={this.props.decrementQuantity}
+                                findAmount={findAmount}
+                                currency={currency}
+                                incrementQuantity={incrementQuantity}
+                                decrementQuantity={decrementQuantity}
                             /> 
                         )
                     })}

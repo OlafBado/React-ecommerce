@@ -23,6 +23,7 @@ class Header extends React.Component {
                         currencies={this.props.currencies}
                         setCurrency={this.props.setCurrency}
                         items={this.props.items}
+                        calculateTotalQuantity={this.props.calculateTotalQuantity}
                     />
                     
                 </div>
@@ -35,6 +36,8 @@ class Header extends React.Component {
                     decrementQuantity={this.props.decrementQuantity}
                     items={this.props.items}
                     findAmount={this.props.findAmount}
+                    calculateTotalQuantity={this.props.calculateTotalQuantity}
+                    calculateTotalAmount={this.props.calculateTotalAmount}
                 /> : null}
         </>
         )

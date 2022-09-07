@@ -61,22 +61,6 @@ query($category: CategoryInput!) {
 }
 `
 
-const getCategories = gql`
-query {
-  categories {
-    name
-  }
-}
-`
-
-const getCurrencies = gql`
-query {
-  currencies {
-    label
-    symbol
-  }
-}`
-
 const categoriesAndCurrencies = gql`
 query {
   categories {
@@ -89,4 +73,4 @@ query {
 }
 `
 
-export { getProducts, getCategories, getDetails, getCurrencies, categoriesAndCurrencies };
+export { getProducts, getDetails, categoriesAndCurrencies };

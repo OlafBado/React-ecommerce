@@ -1,5 +1,5 @@
 import React from 'react'
-import { CartModal, CurrencySwitcher } from '.'
+import { CurrencySwitcher } from '.'
 import vectorDown from '../assets/Vector-down.svg';
 import vectorUp from '../assets/Vector-up.svg';
 
@@ -13,10 +13,7 @@ class Actions extends React.Component {
 
     render() {
 
-        let totalQuantity = this.props.items.reduce((acc, cv) => {
-            acc = acc + cv.quantity
-            return acc
-        }, 0)
+        let totalQuantity = this.props.calculateTotalQuantity(this.props.items)
        
         return (
             <div className='actions'>

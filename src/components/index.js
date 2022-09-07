@@ -1,3 +1,5 @@
+export { Button } from './Button.styled';
+export { Title } from './Title.styled';
 export { default as Header } from './Header';
 export { default as Navigation } from './Navigation';
 export { default as Actions } from './Actions';
@@ -13,5 +15,3 @@ export { default as CartItem } from './CartItem';
 export { default as CartInfo } from './CartInfo';
 export { default as ChangeQuantity } from './ChangeQuantity';
 export { default as CartModalItem } from './CartModalItem';
-export { Button } from './Button.styled';
-export { Title } from './Title.styled';
