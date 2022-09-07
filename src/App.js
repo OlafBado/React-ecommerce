@@ -3,8 +3,8 @@ import { Header, Products, ProductDetails, CartPage } from './components'
 import { graphql } from '@apollo/client/react/hoc'
 import { categoriesAndCurrencies } from './queries/queries';
 import { Routes, Route } from 'react-router-dom';
-//heyyy
-///aaaa
+
+
 class App extends React.Component {
 
     constructor(props) {
@@ -242,16 +242,20 @@ setProductId = (id) => {
     return (
       <>
         <Header
-          isModalOpen={this.state.isModalOpen}
-          openModal={this.openModal}
-          changeCategory={this.changeCategory}
-          categories={this.props.data.categories}
-          category={this.state.title}
-          currency={this.state.currency}
-          currencies={this.props.data.currencies}
-          openCurrencySwitcher={this.openCurrencySwitcher}
-          isCurrencySwitcherOpen={this.state.isCurrencySwitcherOpen}
-          setCurrency={this.setCurrency}
+            isModalOpen={this.state.isModalOpen}
+            openModal={this.openModal}
+            changeCategory={this.changeCategory}
+            categories={this.props.data.categories}
+            category={this.state.title}
+            currency={this.state.currency}
+            currencies={this.props.data.currencies}
+            openCurrencySwitcher={this.openCurrencySwitcher}
+            isCurrencySwitcherOpen={this.state.isCurrencySwitcherOpen}
+            setCurrency={this.setCurrency}
+            findAmount={this.findAmount}
+            incrementQuantity={this.incrementQuantity}
+            decrementQuantity={this.decrementQuantity}
+            items={this.state.cartItems}
         />
         <div className='container'>
           <Routes>
