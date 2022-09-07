@@ -3,7 +3,7 @@ import { Header, Products, ProductDetails, CartPage } from './components'
 import { graphql } from '@apollo/client/react/hoc'
 import { categoriesAndCurrencies } from './queries/queries';
 import { Routes, Route } from 'react-router-dom';
-
+//heyyy
 class App extends React.Component {
 
     constructor(props) {
