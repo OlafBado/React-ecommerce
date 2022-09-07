@@ -4,6 +4,7 @@ import { graphql } from '@apollo/client/react/hoc'
 import { categoriesAndCurrencies } from './queries/queries';
 import { Routes, Route } from 'react-router-dom';
 //heyyy
+///aaaa
 class App extends React.Component {
 
     constructor(props) {
