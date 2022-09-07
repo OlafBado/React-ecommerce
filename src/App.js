@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Products, ProductDetails } from './components'
+import { Header, Products, ProductDetails, CartPage } from './components'
 import { graphql } from '@apollo/client/react/hoc'
 import { categoriesAndCurrencies } from './queries/queries';
 import { Routes, Route } from 'react-router-dom';
@@ -18,6 +18,41 @@ class App extends React.Component {
           isCurrencySwitcherOpen: false
       }
     }
+
+    componentWillUpdate = (nextProps, nextState) => {
+        localStorage.setItem('user', JSON.stringify(nextState))
+    }
+  
+    componentWillReceiveProps = (nextProps) => {
+        if (nextProps && this.state.currency === '' && this.state.title === '') {
+            this.setState({
+                title: nextProps.data.categories[0].name,
+                currency: nextProps.data.currencies[0].symbol
+            })
+        }
+  
+      }
+
+    componentDidMount = () => {
+
+        this.userData = JSON.parse(localStorage.getItem('user'))
+        if (localStorage.getItem('user')) {
+          this.setState({
+              title: this.userData.title,
+              id: this.userData.id,
+              currency: this.userData.currency,
+              cartItems: this.userData.cartItems,
+          })
+      } else {
+          this.setState({
+              title: '',
+              id: '',
+              currency: '',
+              cartItems: [],
+          })
+      }
+    }
+
 
     findAmount = (product, currency) => {
       const currencyDetails = product.prices.find(product => product.currency.symbol === currency)
@@ -114,9 +149,8 @@ class App extends React.Component {
 
         return check
     } else {
-      
+        
     const productValues = product.selectedOptions.map(item => item.value)
-
     const isSame = sameProductsValues.map((product) => {
        return product.every((item, index) => item === productValues[index])
         
@@ -154,36 +188,6 @@ class App extends React.Component {
     } 
 }
 
-    componentDidMount = () => {
-      this.userData = JSON.parse(localStorage.getItem('user'))
-      if (localStorage.getItem('user')) {
-        this.setState({
-            title: this.userData.title,
-            id: this.userData.id,
-            currency: this.userData.currency
-        })
-    } else {
-        this.setState({
-            title: '',
-            id: '',
-            currency: ''
-        })
-    }
-    }
-
-    componentWillUpdate = (nextProps, nextState) => {
-      localStorage.setItem('user', JSON.stringify(nextState))
-  }
-
-    componentWillReceiveProps = (nextProps) => {
-      if (nextProps && this.state.currency === '' && this.state.title === '') {
-          this.setState({
-              title: nextProps.data.categories[0].name,
-              currency: nextProps.data.currencies[0].symbol
-          })
-      }
-
-    }
 
     changeCategory = (category) => {
       this.setState({
@@ -251,18 +255,25 @@ setProductId = (id) => {
         <div className='container'>
           <Routes>
             <Route path='/' element={<Products
-              category={this.state.title}
-              currency={this.state.currency}
-              setProductId={this.setProductId}
-              handlerAddToCart={this.handlerAddToCart}
-              findAmount={this.findAmount}
+                category={this.state.title}
+                currency={this.state.currency}
+                setProductId={this.setProductId}
+                handlerAddToCart={this.handlerAddToCart}
+                findAmount={this.findAmount}
             />} />
             <Route path='/:id' element={<ProductDetails
-              currency={this.state.currency}
-              id={this.state.id}
-              handlerAddToCart={this.handlerAddToCart}
-              findAmount={this.findAmount}
+                currency={this.state.currency}
+                id={this.state.id}
+                handlerAddToCart={this.handlerAddToCart}
+                findAmount={this.findAmount}
             />} />
+            <Route path='/cart' element={<CartPage
+                findAmount={this.findAmount}
+                currency={this.state.currency}
+                incrementQuantity={this.incrementQuantity}
+                decrementQuantity={this.decrementQuantity}
+                items={this.state.cartItems}
+             />} />
           </Routes>
         </div>
       </>
