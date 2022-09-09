@@ -19,22 +19,24 @@ class App extends React.Component {
           isCurrencySwitcherOpen: false
       }
     }
-
-    componentWillUpdate = (nextProps, nextState) => {
-        localStorage.setItem('user', JSON.stringify(nextState))
-    }
   
-    componentWillReceiveProps = (nextProps) => {
-        if (nextProps && this.state.currency === '' && this.state.title === '') {
-            this.setState({
+    static getDerivedStateFromProps = (nextProps, prevState) => {
+        if (nextProps.data.loading === false && prevState.currency === '' && prevState.title === '') {
+            return ({
                 title: nextProps.data.categories[0].name,
                 currency: nextProps.data.currencies[0].symbol
             })
         }
-  
+        return null
       }
 
+      handleUpdateLocalStorage = () => {
+        localStorage.setItem('user', JSON.stringify(this.state))
+    }
+
     componentDidMount = () => {
+
+        window.addEventListener("beforeunload", this.handleUpdateLocalStorage)
 
         this.userData = JSON.parse(localStorage.getItem('user'))
         if (localStorage.getItem('user')) {
@@ -53,6 +55,10 @@ class App extends React.Component {
           })
       }
     }
+
+    componentWillUnmount () {
+        window.removeEventListener("beforeunload", this.handleUpdateLocalStorage)
+      }
 
 
     findAmount = (product, currency) => {
