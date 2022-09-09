@@ -10,7 +10,8 @@ class ProductDetails extends React.Component {
         super()
         this.state = {
             index: 0,
-            selectedOptions: [],
+            selectedOptions: {},
+            setChangedAttributes: []
         }
         
     }
@@ -24,11 +25,24 @@ class ProductDetails extends React.Component {
     variantChange = (e) => {
         const target = e.target
         const selectedOptions = this.state.selectedOptions
-
-        //selectedOptions[target.name] = target.value
-
         const changedAttribute = selectedOptions.find(element => element.attribute === target.name)
         changedAttribute.value = target.value
+
+        const changed = this.state.setChangedAttributes
+        let x = changed.find(item => {
+            let result = item.attribute === changedAttribute.attribute
+            return result
+        })
+        if (!x) {
+            this.setState(prevState=>({
+                setChangedAttributes: [...prevState.setChangedAttributes, changedAttribute]
+            }))
+        } else {
+            this.setState(prevState=>({
+                setChangedAttributes: prevState.setChangedAttributes.map(el => el.attribute === x.attribute ? {...el, value: target.value} : el)
+            }))
+        }
+
         this.setState({
             selectedVariant: changedAttribute
         })
@@ -41,17 +55,32 @@ class ProductDetails extends React.Component {
     }
 
     setDefaultAttributes (product) {
+        console.log(this.state)
         if (!product.data.loading) {
- 
-            const selectedAttributes = product.data.product.attributes.map(p => {
+            if (this.state.setChangedAttributes.length >= 1) {
+
+                const selectedAttributes = product.data.product.attributes.map(p => {
+                    const changedAttribute = this.state.setChangedAttributes.find(o => o.attribute === p.id)
                     return {
                         attribute: p.id,
-                        value: p.items[0].value
-                    }                
-            } )
+                        value: changedAttribute ? changedAttribute.value : p.items[0].value
+                    } 
+                } )
             this.setState({
                 selectedOptions: selectedAttributes
             })
+
+            } else {
+                const selectedAttributes = product.data.product.attributes.map(p => {
+                        return {
+                            attribute: p.id,
+                            value: p.items[0].value
+                        }                
+                } )
+                this.setState({
+                    selectedOptions: selectedAttributes
+                })
+            }
         }
     }
 

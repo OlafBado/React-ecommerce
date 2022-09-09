@@ -239,11 +239,13 @@ setProductId = (id) => {
 }
 
 calculateTotalQuantity = (items) => {
-    const totalQuantity = items.reduce((acc, cv) => {
-        acc = acc + cv.quantity
-        return acc
-    }, 0)
-    return totalQuantity
+    if (items) {
+        const totalQuantity = items.reduce((acc, cv) => {
+            acc = acc + cv.quantity
+            return acc
+        }, 0)
+        return totalQuantity
+    }
 }
 
 calculateTotalAmount = (items, currency, findAmount) => {
