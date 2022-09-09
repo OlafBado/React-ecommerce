@@ -55,7 +55,6 @@ class ProductDetails extends React.Component {
     }
 
     setDefaultAttributes (product) {
-        console.log(this.state)
         if (!product.data.loading) {
             if (this.state.setChangedAttributes.length >= 1) {
 
