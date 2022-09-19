@@ -1,5 +1,5 @@
 <h1>React Ecommerce App</h1>
-<p>Ecommerce application with different products provided with typical functionalities. Data is provided by GraphQL endpoint.</p>
+<p>Ecommerce application with different products. Application supports typical online store functionalities. Data is provided by GraphQL endpoint.</p>
 </br>
 <h2>Functionalities</h2>
 <ul>
@@ -22,6 +22,7 @@
     Change currency - by clicking on icon next to the cart, you can change currency. It will influence all numeric data like price, total price, tax etc.
   </li>
 </ul>
+</br>
 <h2>Tech stack</h2>
 <ul>
   <li>React</li>
