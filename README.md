@@ -1,6 +1,7 @@
 <h1>React Ecommerce App</h1>
 <p>Ecommerce application with different products provided with typical functionalities. Data is provided by GraphQL endpoint.</p>
 <h2>Functionalities</h2>
+</br>
 <ul>
   <li>
     Listing page - list products by selected category.
