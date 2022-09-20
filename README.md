@@ -30,4 +30,8 @@
   <li>GraphQL with Apollo client</li>
 </ul>
 
-<video src='https://screenrec.com/share/HeICSgwFM7' width=180/>
+
+
+https://user-images.githubusercontent.com/110351038/191186598-a7a5405d-8436-4447-8425-467cb4789eef.mp4
+
+
