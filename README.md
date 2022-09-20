@@ -10,7 +10,7 @@
     Ability to add product directly from listing page.
   </li>
   <li>
-    Product details - click on product to be redirected to the product details page. There are photos on the page as well as description about the product. Also (if         available) different attributes of product. Select which one you want and click Add to cart button to add product to the cart.
+    Product details - click on product to see its details. There are photos on the page as well as description about the product. Also (if         available) different attributes of product. Select which one you want and click Add to cart button to add product to the cart.
   </li>
   <li>
     Minicart - see your selected products by clicking on cart icon. You can change quantity of products inside of cart and see total price. Click View bag to be             redirected to Cart page.
