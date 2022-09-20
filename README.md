@@ -29,9 +29,10 @@
   <li>React - styled components</li>
   <li>GraphQL with Apollo client</li>
 </ul>
+</br>
+<h2>
+  Presentation video
+</h2>
 
-
-
-https://user-images.githubusercontent.com/110351038/191186598-a7a5405d-8436-4447-8425-467cb4789eef.mp4
-
+https://user-images.githubusercontent.com/110351038/191188580-b6083a9a-cee8-4502-8513-cc27f031cd34.mp4
 
