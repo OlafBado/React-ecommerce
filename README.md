@@ -29,3 +29,5 @@
   <li>React - styled components</li>
   <li>GraphQL with Apollo client</li>
 </ul>
+
+https://screenrec.com/share/HeICSgwFM7
