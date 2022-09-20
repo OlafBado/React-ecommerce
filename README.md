@@ -30,4 +30,4 @@
   <li>GraphQL with Apollo client</li>
 </ul>
 
-<video src='[your URL here](https://screenrec.com/share/HeICSgwFM7)' width=180/>
+<video src='https://screenrec.com/share/HeICSgwFM7' width=180/>
