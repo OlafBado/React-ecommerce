@@ -4,19 +4,17 @@
 }
 
 body {
-    max-width: 90em;
+    width: 80%;
+    max-width: 1000px;
     margin: 0 auto;
     position: relative;
 }
 
 .surface {
     display: flex;
-    flex-direction: row;
     align-items: stretch;
-    justify-content: space-evenly;
+    justify-content: space-between;
     background-color: #FFFFFF;
-    height: 5em;
-    gap: 14.25em;
     position: sticky;
     z-index: 2000;
     
@@ -50,7 +48,7 @@ body {
 
 .header-navigation-button {
     height: 100%;
-    width: 6.06em;
+    padding: 1.75rem 1.75rem;
     border: none;
     background: transparent;
     font-family: 'Raleway';
@@ -77,6 +75,7 @@ body {
     justify-content: flex-end;
     align-items: center;
     gap: 2em;
+    position: relative;
 }
 
 .actions-cart {
@@ -115,10 +114,10 @@ body {
     flex-direction: column;
     box-sizing: border-box;
     padding: 32px 16px 32px 16px;
-    width: 325px;
-    height: 677px;
+    max-width: 325px;
+    max-height: 677px;
     right: 72px;
-    top: 79px;
+    top: 75px;
     z-index: 1000;
 }
 
@@ -284,12 +283,11 @@ body {
     position: absolute;
     background-color: #FFFFFF;
     top: 30px;
-    
+    right: -50px;
     height: auto;
 }
 
 .dropdown-content {
-    width: 7.13em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -298,8 +296,7 @@ body {
 
 .dropdown-element {
     display: flex;
-    width: 7.13em;
-    height: 45px;
+    padding: 0.5rem 2rem;
     background-color: #FFFFFF;
     align-items: center;
     justify-content: center;
@@ -336,7 +333,7 @@ body {
 
 .container {
     
-    padding: 7% 7% 7% 7%;
+    padding: 4rem 0;
 }
 
 .products {
@@ -758,4 +755,53 @@ body {
     border: none;
     width: 24px;
     height: 24px;
+}
+
+.media-dropdown {
+    display: none;
+}
+
+@media (max-width: 800px) {
+
+    .logo,.header-navigation {
+        display: none;
+    }
+
+    .media-dropdown {
+        display: block;
+        padding: 1.15rem 0;
+    }
+
+    .media-dropdown-button {
+        display: block;
+        height: 41px;
+        width: 41px;
+        background: transparent;
+        border: none;
+        background: url(bars-solid.svg) no-repeat;
+    }
+
+    .media-dropdown-menu {
+        position: absolute;
+        left: 0px;
+        top: calc(80% + 0.25rem);
+        background: #FFF;
+        box-shadow: 0.2rem 0.2rem 0.5rem rgba(188, 188, 188, 0.606);    
+    }
+
+    .header-navigation-button {
+        font-family: 'Raleway';
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 120%;
+        width: 100%;
+        padding: 1rem 0;
+    }
+
+    .active-navigation-button, 
+    .header-navigation-button:hover {
+        background-color: #EEEEEE;
+        color: black;
+        border: none;
+    }
 }

@@ -15,3 +15,4 @@ export { default as CartItem } from './CartItem';
 export { default as CartInfo } from './CartInfo';
 export { default as ChangeQuantity } from './ChangeQuantity';
 export { default as CartModalItem } from './CartModalItem';
+export { default as CategoriesDropdown} from './CategoriesDropdown';

@@ -1,16 +1,22 @@
 import React from 'react'
 import logo from '../assets/a-logo.jpg'
-import { Navigation, Actions, CartModal } from '.'
+import { Navigation, Actions, CartModal, CategoriesDropdown } from '.'
 
 class Header extends React.Component {
     render() {
         return (
             <>
                 <div onClick={this.props.isModalOpen ? () => this.props.openModal() : null} className='surface'>
+                    <CategoriesDropdown 
+                        changeCategory={this.props.changeCategory}
+                        categories={this.props.categories}
+                        category={this.props.category}
+                    />
                     <Navigation
                         changeCategory={this.props.changeCategory}
                         categories={this.props.categories}
-                        category={this.props.category}/>
+                        category={this.props.category}
+                    />
                     <div className='logo'>
                         <img src={logo} />
                     </div>
@@ -39,6 +45,7 @@ class Header extends React.Component {
                     calculateTotalQuantity={this.props.calculateTotalQuantity}
                     calculateTotalAmount={this.props.calculateTotalAmount}
                 /> : null}
+                
         </>
         )
     }

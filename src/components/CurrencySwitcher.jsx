@@ -21,7 +21,7 @@ class CurrencySwitcher extends React.Component {
                                     'dropdown-element'}
                                     onClick={() => this.props.setCurrency(currency.symbol)}
                                 >
-                                    <p>{currency.symbol} {currency.label}</p>
+                                    <p>{currency.symbol}{currency.label}</p>
                                 </div>
                             )
                         })}
