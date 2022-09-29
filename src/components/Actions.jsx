@@ -1,5 +1,5 @@
 import React from 'react'
-import { CurrencySwitcher } from '.'
+import { CurrencySwitcher, CartModal } from '.'
 import vectorDown from '../assets/Vector-down.svg';
 import vectorUp from '../assets/Vector-up.svg';
 
@@ -21,7 +21,7 @@ class Actions extends React.Component {
                     {this.props.currency}
                     <img ref={this.imgRef} src={this.props.isCurrencySwitcherOpen === true ? vectorUp : vectorDown}/>
                 </button>
-                <button onClick={() => this.props.openModal()} className='actions-cart'>
+                <button ref={this.props.btnRef} onClick={() => this.props.openModal()} className='actions-cart'>
                     {totalQuantity >= 1
                     ?
                     <div className='badge'>{totalQuantity}</div>
@@ -41,6 +41,19 @@ class Actions extends React.Component {
                 />
                 :
                 null}
+                {this.props.isModalOpen
+                ? 
+                <CartModal
+                    openModal={this.props.openModal}
+                    currency={this.props.currency}
+                    incrementQuantity={this.props.incrementQuantity}
+                    decrementQuantity={this.props.decrementQuantity}
+                    items={this.props.items}
+                    findAmount={this.props.findAmount}
+                    calculateTotalQuantity={this.props.calculateTotalQuantity}
+                    calculateTotalAmount={this.props.calculateTotalAmount}
+                    btnRef={this.props.btnRef}
+                /> : null}
             </div>
         )
     }

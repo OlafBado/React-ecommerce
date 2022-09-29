@@ -117,7 +117,7 @@ class ProductDetails extends React.Component {
                                 size={'16px'}
                                 color={'#FFFFFF'}
                                 border={'none'}
-                                width={'292px'}
+                                width={'100%'}
                                 height={'52px'}
                                 bg={'rgba(94, 206, 123, 1)'}
                             >

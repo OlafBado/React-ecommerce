@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { OutsideClick } from '.'
-import displayCategories from '../utils/displayCategories'
+import { DisplayCategories } from '.'
 
 class Navigation extends React.Component {
 
@@ -27,7 +27,15 @@ class Navigation extends React.Component {
                 
         return (
             <div className='header-navigation'>
-                { this.props ? displayCategories(this.props): ''}
+                { this.props ? 
+                <DisplayCategories 
+                    changeCategory={this.props.changeCategory}
+                    categories={this.props.categories}
+                    category={this.props.category}
+                />
+                : 
+                ''
+                }
             </div>
         )
     }

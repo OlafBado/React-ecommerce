@@ -197,6 +197,7 @@ class App extends React.Component {
 
 
     changeCategory = (category) => {
+        console.log('called')
       this.setState({
         title: category
       })
@@ -266,6 +267,8 @@ calculateTotalAmount = (items, currency, findAmount) => {
   render() {
     return (
       <>
+      <div className='header-wrapper'>
+        <div className='container'>
         <Header
             isModalOpen={this.state.isModalOpen}
             openModal={this.openModal}
@@ -284,7 +287,9 @@ calculateTotalAmount = (items, currency, findAmount) => {
             calculateTotalQuantity={this.calculateTotalQuantity}
             calculateTotalAmount={this.calculateTotalAmount}
         />
-        <div className='container'>
+        </div>
+    </div>
+        <div className='container padding'>
           <Routes>
             <Route path='/' element={<Products
                 category={this.state.title}

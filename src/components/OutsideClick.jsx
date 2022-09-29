@@ -22,7 +22,7 @@ export default class OutsideAlerter extends Component {
     if (this.props.headerDropdown) {
       console.log('helo')
     } else {
-      if (this.wrapperRef && !this.wrapperRef.current.contains(event.target) && event.path[0] !== this.props.buttonref.current && event.path[0] !== this.props.imgref.current) {
+      if (this.wrapperRef && !this.wrapperRef.current.contains(event.target) && event.composedPath()[0] !== this.props.buttonref.current && event.composedPath()[0] !== this.props.imgref.current) {
           this.props.openCurrencySwitcher()
       }
     }

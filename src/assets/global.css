@@ -3,20 +3,11 @@
     padding: 0;
 }
 
-body {
-    width: 80%;
-    max-width: 1000px;
-    margin: 0 auto;
-    position: relative;
-}
-
 .surface {
     display: flex;
     align-items: stretch;
     justify-content: space-between;
     background-color: #FFFFFF;
-    position: sticky;
-    z-index: 2000;
     
 }
 
@@ -113,11 +104,11 @@ body {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    padding: 32px 16px 32px 16px;
+    padding: 2rem 1rem;
     max-width: 325px;
     max-height: 677px;
-    right: 72px;
-    top: 75px;
+    right: 0px;
+    top: 70px;
     z-index: 1000;
 }
 
@@ -185,7 +176,7 @@ body {
 .cart-modal-buttons {
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    justify-content: space-between;
     margin-top: 32px;
     gap: 12px;
 }
@@ -215,8 +206,6 @@ body {
 }
 
 .cart-modal-items {
-    width: 298px;
-    height: 420px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -332,8 +321,19 @@ body {
 }
 
 .container {
-    
-    padding: 4rem 0;
+    width: 80%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.header-wrapper {
+    background-color: #FFFFFF;
+    position: sticky;
+    z-index: 2000;
+}
+
+.padding {
+    padding: 3rem 0;
 }
 
 .products {
@@ -422,9 +422,10 @@ body {
 }
 
 .product-details-images {
-    width: 100px;
-    height: 511px;
+    max-width: 100px;
+    max-height: 511px;
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .product-details-images img {
@@ -441,7 +442,8 @@ body {
 
 .product-details-image {
     width: 61%;
-    height: 511px;
+    max-height: 511px;
+    align-self: flex-start;
     margin-left: 20px;
 }
 
@@ -500,6 +502,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
     padding: 0px;
     gap: 7px;
     margin-top: 5px;
@@ -552,6 +555,7 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
     gap: 7px;
     margin-top: 7px;
     margin-left: 3px;
@@ -768,6 +772,7 @@ body {
     }
 
     .media-dropdown {
+        position: relative;
         display: block;
         padding: 1.15rem 0;
     }
@@ -795,7 +800,7 @@ body {
         font-size: 16px;
         line-height: 120%;
         width: 100%;
-        padding: 1rem 0;
+        padding: 1rem 1.5rem;
     }
 
     .active-navigation-button, 
@@ -803,5 +808,18 @@ body {
         background-color: #EEEEEE;
         color: black;
         border: none;
+    }
+}
+
+#portal {
+    position: relative;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 1250px; 
+}
+
+@media (max-width: 400px) {
+    .products-item {
+        width: 300px;
     }
 }

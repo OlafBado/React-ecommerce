@@ -5,15 +5,29 @@ import { Link } from 'react-router-dom'
 
 class CartModal extends React.Component {
 
+    handleClickOutside = (e) => {
+        const element = e.composedPath()[0]
+        if (element !== this.props.btnRef.current && !e.composedPath().find(e => e.className === 'cart-modal') && e.composedPath()[0].className !== 'badge') {
+            this.props.openModal()
+         }
+    }
+
+    componentDidMount() {
+        document.addEventListener("mousedown", this.handleClickOutside);
+      }
+
+    componentWillUnmount() {
+        document.removeEventListener("mousedown", this.handleClickOutside);
+    }
+
     render() {
-        
         const { items, currency, findAmount, openModal, incrementQuantity, decrementQuantity } = this.props
         const totalQuantity = this.props.calculateTotalQuantity(items)
         const totalAmount = this.props.calculateTotalAmount(items, currency, findAmount)
 
         return ReactDOM.createPortal(
             <>
-                <div onClick={() => openModal()} className='overlay-styles'></div>
+                <div className='overlay-styles'></div>
                 <div className='cart-modal'>
                     <p>My Bag<span>, {totalQuantity} {totalQuantity === 1 ? 'item' : 'items'}</span></p>
                     <div className='cart-modal-items'>

@@ -3,10 +3,16 @@ import logo from '../assets/a-logo.jpg'
 import { Navigation, Actions, CartModal, CategoriesDropdown } from '.'
 
 class Header extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.btnRef = React.createRef()
+    }
+
     render() {
         return (
             <>
-                <div onClick={this.props.isModalOpen ? () => this.props.openModal() : null} className='surface'>
+                <div className='surface'>
                     <CategoriesDropdown 
                         changeCategory={this.props.changeCategory}
                         categories={this.props.categories}
@@ -30,10 +36,15 @@ class Header extends React.Component {
                         setCurrency={this.props.setCurrency}
                         items={this.props.items}
                         calculateTotalQuantity={this.props.calculateTotalQuantity}
+                        btnRef={this.btnRef}
+                        calculateTotalAmount={this.props.calculateTotalAmount}
+                        findAmount={this.props.findAmount}
+                        incrementQuantity={this.props.incrementQuantity}
+                        decrementQuantity={this.props.decrementQuantity}
                     />
                     
                 </div>
-                {this.props.isModalOpen
+                {/* {this.props.isModalOpen
                 ? 
                 <CartModal
                     openModal={this.props.openModal}
@@ -44,7 +55,8 @@ class Header extends React.Component {
                     findAmount={this.props.findAmount}
                     calculateTotalQuantity={this.props.calculateTotalQuantity}
                     calculateTotalAmount={this.props.calculateTotalAmount}
-                /> : null}
+                    btnRef={this.btnRef}
+                /> : null} */}
                 
         </>
         )
