@@ -261,6 +261,7 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 160%;
+    color: black;
     
 }
 
@@ -835,6 +836,7 @@
         line-height: 120%;
         width: 100%;
         padding: 1rem 1.5rem;
+        color: black;
     }
 
     .active-navigation-button, 
