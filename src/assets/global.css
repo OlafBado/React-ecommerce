@@ -112,6 +112,12 @@
     z-index: 1000;
 }
 
+.empty-bag {
+    text-align: center;
+    font-style: italic;
+    font-family: 'Raleway';
+}
+
 .cart-modal-image-quantity p {
     font-family: 'Raleway';
     font-style: normal;

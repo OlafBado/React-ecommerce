@@ -127,13 +127,13 @@ class ProductDetails extends React.Component {
                                 onClick={() => this.props.handlerAddToCart({...product, selectedOptions : this.state.selectedOptions})}
                                 weight={'600'}
                                 size={'16px'}
-                                color={'#FFFFFF'}
+                                color={product.inStock ? '#FFFFFF' : '#8D8F9A'}
                                 border={'none'}
                                 width={'100%'}
                                 height={'52px'}
-                                bg={'rgba(94, 206, 123, 1)'}
+                                bg={product.inStock ? 'rgba(94, 206, 123, 1)' : '#eeeeee'}
                             >
-                                ADD TO CART
+                                {product.inStock ? 'ADD TO CART' : 'OUT OF STOCK'}
                             </Button>
                             <div className='product-details-description'>
                                 <Markup content={product.description}/>

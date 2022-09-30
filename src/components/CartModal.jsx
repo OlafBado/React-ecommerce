@@ -31,6 +31,9 @@ class CartModal extends React.Component {
                 <div className='cart-modal'>
                     <p>My Bag<span>, {totalQuantity} {totalQuantity === 1 ? 'item' : 'items'}</span></p>
                     <div className='cart-modal-items'>
+                        {items.length === 0 ?
+                        <h3 className='empty-bag'>Your bag is empty...</h3>
+                        :
                         <CartModalItem
                             findAmount={findAmount}
                             currency={currency}
@@ -38,6 +41,7 @@ class CartModal extends React.Component {
                             decrementQuantity={decrementQuantity}
                             items={items}
                         />                       
+                        }
                     </div>
                     <div className='cart-modal-description'>
                         <p className='cart-modal-total'>Total</p>
