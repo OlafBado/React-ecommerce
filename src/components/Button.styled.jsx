@@ -10,5 +10,9 @@ export const Button = style.button`
     font-style: 'normal';
     font-size: ${(props) => props.size};
     font-weight: ${(props) => props.weight};
+
+    @media (max-width: 400px) {
+        width: 100%
+    }
 `
 
