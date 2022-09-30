@@ -44,7 +44,7 @@ class CartItem extends React.Component {
                         findAmount={this.props.findAmount}
                         currency={this.props.currency}
                         product={this.props}
-                        place={'details'}
+                        place={'cart-page'}
                     />
                 </div>
                 <div className='cart-item-image'>

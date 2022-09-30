@@ -28,6 +28,7 @@ class Attributes extends React.Component {
     }}
 
     render() {
+        console.log(this.props.place)
         const data = this.props.attributes
         return (
             <>
@@ -35,7 +36,7 @@ class Attributes extends React.Component {
                 return(
                 <div key={attribute.id} className='text-div'>
                     <p className={this.props.place === 'cart' ? 'cart-attributes' : 'details-attributes'}>{attribute.id}:</p>
-                    {(attribute.type === 'text' ? (<div className={this.props.place === 'cart' ? 'text-cart' : 'text-details'}>{attribute.items.map((item, index) => {
+                    {(attribute.type === 'text' ? (<div className={`text-${this.props.place}`}>{attribute.items.map((item, index) => {
                         return(
                             <button
                                 name={attribute.id}
@@ -47,7 +48,7 @@ class Attributes extends React.Component {
                                 {item.value}
                             </button>
                         )
-                    })}</div>) : (<div className='swatch'>{attribute.items.map((item, index) => {
+                    })}</div>) : (<div className={`swatch-${this.props.place}`}>{attribute.items.map((item, index) => {
                         return(
                             <button
                                 key={index} 
