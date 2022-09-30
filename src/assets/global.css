@@ -870,6 +870,7 @@
     }
 
     .cart-modal {
+        min-width: 269px;
         max-height: 457px;
     }
     
