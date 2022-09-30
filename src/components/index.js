@@ -17,3 +17,4 @@ export { default as ChangeQuantity } from './ChangeQuantity';
 export { default as CartModalItem } from './CartModalItem';
 export { default as CategoriesDropdown} from './CategoriesDropdown';
 export { default as DisplayCategories} from './DisplayCategories';
+export { default as Slider} from './Slider';

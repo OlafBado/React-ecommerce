@@ -1,7 +1,5 @@
 import React from 'react'
-import { CartInfo, ChangeQuantity } from '.'
-import vectorLeft from '../assets/Vector-left.svg'
-import vectorRight from '../assets/Vector-right.svg'
+import { CartInfo, ChangeQuantity, Slider } from '.'
 
 class CartItem extends React.Component {
 
@@ -9,16 +7,32 @@ class CartItem extends React.Component {
         index: 0
     }
 
-    handlerImgNext() {
+    // handleImgChange(direction) {
+    //     if (direction === 'next') {
+    //         let newSlide = this.state.index === this.props.gallery.length -1 ? 0 : this.state.index +1;
+    //         this.setState({index: newSlide})
+    //     } else {
+    //         let newSlide = this.state.index === 0 ? this.props.gallery.length -1 : this.state.index -1;
+    //         this.setState({index: newSlide})
+    //     }
+    // }
 
-       let newSlide = this.state.index === this.props.gallery.length -1 ? 0 : this.state.index +1;
-       this.setState({index: newSlide})
-    }
+    // handlerImgNext() {
 
-    handlerImgPrev() {
+    //    let newSlide = this.state.index === this.props.gallery.length -1 ? 0 : this.state.index +1;
+    //    this.setState({index: newSlide})
+    // }
+
+    // handlerImgPrev() {
         
-        let newSlide = this.state.index === 0 ? this.props.gallery.length -1 : this.state.index -1;
-        this.setState({index: newSlide})
+    //     let newSlide = this.state.index === 0 ? this.props.gallery.length -1 : this.state.index -1;
+    //     this.setState({index: newSlide})
+    // }
+
+    changeImg = (index) => {
+        this.setState({
+            index: index
+        })
     }
 
     render() {
@@ -47,10 +61,12 @@ class CartItem extends React.Component {
                         <img src={this.props.gallery[index]}/>
                         {this.props.gallery.length > 1 
                         ?
-                        <div className='slider'>
-                            <button onClick={() => this.handlerImgPrev()}><img src={vectorLeft}/></button>
-                            <button onClick={() => this.handlerImgNext()}><img src={vectorRight}/></button>
-                        </div>
+                        <Slider 
+                            index={index} 
+                            changeImg={this.changeImg} 
+                            galleryLength={this.props.gallery.length}
+                            place='cart'
+                        />
                         : 
                         null}
                     </div>

@@ -2,7 +2,7 @@ import React from 'react'
 import { Markup } from 'interweave';
 import { getDetails } from '../queries/queries';
 import { graphql } from '@apollo/client/react/hoc';
-import { Attributes, Button } from '.'
+import { Attributes, Button, Slider } from '.'
 
 class ProductDetails extends React.Component {
 
@@ -98,7 +98,19 @@ class ProductDetails extends React.Component {
                         })}
                     </div>
                     <div className='product-details-main'>
-                        <img className='product-details-image' src={product.gallery[index]}/>
+                        <div className='details-slider'>
+                            <img className='product-details-image' src={product.gallery[index]}/>
+                            {product.gallery.length > 1 
+                            ?
+                            <Slider 
+                                index={index}
+                                changeImg={this.changeImg}
+                                galleryLength={product.gallery.length}
+                                place='details'
+                            />
+                            :
+                            null}
+                        </div>
                         <div className='product-details-details'>
                             <p className='details-brand'>{product.brand}</p>
                             <p className='details-name'>{product.name}</p>
@@ -134,6 +146,7 @@ class ProductDetails extends React.Component {
     }
     
     render() {
+        console.log(this.props)
         
         return (
             <div className='product-details'>
