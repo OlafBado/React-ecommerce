@@ -35,6 +35,3 @@
 <h2>
   Presentation video
 </h2>
-
-https://user-images.githubusercontent.com/110351038/191188580-b6083a9a-cee8-4502-8513-cc27f031cd34.mp4
-
