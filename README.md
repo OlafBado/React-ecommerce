@@ -1,7 +1,7 @@
 <h1>React Ecommerce App</h1>
 <p>Ecommerce application with different products. Application supports typical online store functionalities. Data is provided by GraphQL endpoint.</p>
 <p>Visit this app by clicking on the link: https://react-ecommerce-shop-online.herokuapp.com/ </p>
-<b><i>RWD in progress...</i></b>
+<b><i>Mobile friendly</i></b>
 </br>
 <h2>Functionalities</h2>
 <ul>
@@ -31,10 +31,3 @@
   <li>React - styled components</li>
   <li>GraphQL with Apollo client</li>
 </ul>
-</br>
-<h2>
-  Presentation video
-</h2>
-
-https://user-images.githubusercontent.com/110351038/191188580-b6083a9a-cee8-4502-8513-cc27f031cd34.mp4
-
