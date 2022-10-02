@@ -146,8 +146,6 @@ class ProductDetails extends React.Component {
     }
     
     render() {
-        console.log(this.props)
-        
         return (
             <div className='product-details'>
                 {this.displayDetails()}
@@ -161,7 +159,7 @@ export default graphql(getDetails, {
     options: (props) => {
         return {
             variables: {
-                id: props.id
+                id: window.location.pathname.split('/')[1]
             },
             fetchPolicy: "no-cache"
         }

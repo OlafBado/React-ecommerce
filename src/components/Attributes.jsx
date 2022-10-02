@@ -28,7 +28,6 @@ class Attributes extends React.Component {
     }}
 
     render() {
-        console.log(this.props.place)
         const data = this.props.attributes
         return (
             <>

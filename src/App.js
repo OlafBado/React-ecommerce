@@ -197,7 +197,6 @@ class App extends React.Component {
 
 
     changeCategory = (category) => {
-        console.log('called')
       this.setState({
         title: category
       })
