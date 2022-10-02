@@ -17,7 +17,7 @@ class ProductDetails extends React.Component {
     }
 
     componentDidUpdate = (previousProps, previousState) => {
-        if (previousProps.data !== this.props.data ) {
+        if (previousProps.data !== this.props.data) {
             this.setDefaultAttributes(this.props)
         }
     }
@@ -55,7 +55,8 @@ class ProductDetails extends React.Component {
     }
 
     setDefaultAttributes (product) {
-        if (!product.data.loading) {
+        console.log(product)
+        if (!product.data.loading && product.data.product) {
             if (this.state.setChangedAttributes.length >= 1) {
 
                 const selectedAttributes = product.data.product.attributes.map(p => {
@@ -141,6 +142,10 @@ class ProductDetails extends React.Component {
                         </div>
                     </div>
                 </>
+            )
+        } else {
+            return (
+                <div>Product not found...</div>
             )
         }
     }

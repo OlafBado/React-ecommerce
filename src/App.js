@@ -2,7 +2,7 @@ import React from 'react';
 import { Header, Products, ProductDetails, CartPage } from './components'
 import { graphql } from '@apollo/client/react/hoc'
 import { categoriesAndCurrencies } from './queries/queries';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 
 class App extends React.Component {
