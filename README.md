@@ -31,7 +31,3 @@
   <li>React - styled components</li>
   <li>GraphQL with Apollo client</li>
 </ul>
-</br>
-<h2>
-  Presentation video
-</h2>
