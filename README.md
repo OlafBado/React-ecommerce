@@ -1,5 +1,5 @@
-<h1>React Ecommerce App</h1>
-<p>Ecommerce application with different products. Application supports typical online store functionalities. Data is provided by GraphQL endpoint.</p>
+<h1>React E-commerce App</h1>
+<p>E-commerce application with different products. Application supports typical online store functionalities. Data is provided by GraphQL endpoint.</p>
 <p>Visit this app by clicking on the link: https://react-ecommerce-shop-online.herokuapp.com/ </p>
 <b><i>Mobile friendly</i></b>
 </br>
