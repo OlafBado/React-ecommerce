@@ -62,7 +62,6 @@ class ProductDetails extends React.Component {
     };
 
     setDefaultAttributes(product) {
-        console.log(product);
         if (!product.data.loading && product.data.product) {
             if (this.state.setChangedAttributes.length >= 1) {
                 const selectedAttributes = product.data.product.attributes.map(
@@ -185,7 +184,11 @@ class ProductDetails extends React.Component {
     };
 
     render() {
-        return <div className="product-details">{this.displayDetails()}</div>;
+        return (
+            <div className="container padding">
+                <div className="product-details">{this.displayDetails()}</div>
+            </div>
+        );
     }
 }
 
@@ -193,7 +196,7 @@ export default graphql(getDetails, {
     options: (props) => {
         return {
             variables: {
-                id: window.location.pathname.split("/")[1],
+                id: window.location.pathname.split("/")[2],
             },
             fetchPolicy: "no-cache",
         };

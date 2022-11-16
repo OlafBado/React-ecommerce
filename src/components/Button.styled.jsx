@@ -1,4 +1,4 @@
-import style from 'styled-components'
+import style from "styled-components";
 
 export const Button = style.button`
     background: ${(props) => props.bg};
@@ -10,9 +10,9 @@ export const Button = style.button`
     font-style: 'normal';
     font-size: ${(props) => props.size};
     font-weight: ${(props) => props.weight};
+    cursor: pointer;
 
     @media (max-width: 400px) {
         width: 100%
     }
-`
-
+`;
