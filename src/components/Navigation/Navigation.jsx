@@ -2,7 +2,7 @@ import React from "react";
 import { DisplayCategories } from "..";
 import "./styles.css";
 
-class Navigation extends React.Component {
+class Navigation extends React.PureComponent {
     render() {
         return (
             <div className="header-navigation">

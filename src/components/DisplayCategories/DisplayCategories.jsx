@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./styles.css";
 
-class DisplayCategories extends React.Component {
+class DisplayCategories extends React.PureComponent {
     render() {
         const active = {
             color: "#5ece7b",
