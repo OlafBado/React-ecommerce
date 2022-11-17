@@ -329,24 +329,30 @@ class App extends React.Component {
                                         />
                                     }
                                 />
+                                <Route
+                                    path={`/${cat.name}/cart`}
+                                    element={
+                                        <CartPage
+                                            findAmount={this.findAmount}
+                                            currency={this.state.currency}
+                                            incrementQuantity={
+                                                this.incrementQuantity
+                                            }
+                                            decrementQuantity={
+                                                this.decrementQuantity
+                                            }
+                                            items={this.state.cartItems}
+                                            calculateTotalQuantity={
+                                                this.calculateTotalQuantity
+                                            }
+                                            calculateTotalAmount={
+                                                this.calculateTotalAmount
+                                            }
+                                        />
+                                    }
+                                />
                             </Route>
                         ))}
-                    <Route
-                        path="/cart"
-                        element={
-                            <CartPage
-                                findAmount={this.findAmount}
-                                currency={this.state.currency}
-                                incrementQuantity={this.incrementQuantity}
-                                decrementQuantity={this.decrementQuantity}
-                                items={this.state.cartItems}
-                                calculateTotalQuantity={
-                                    this.calculateTotalQuantity
-                                }
-                                calculateTotalAmount={this.calculateTotalAmount}
-                            />
-                        }
-                    />
                     <Route path="*" element={<div></div>} />
                 </Routes>
             </>

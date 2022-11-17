@@ -56,6 +56,7 @@ class Actions extends React.PureComponent {
                 ) : null}
                 {this.props.isModalOpen ? (
                     <CartModal
+                        category={this.props.category}
                         openModal={this.props.openModal}
                         currency={this.props.currency}
                         incrementQuantity={this.props.incrementQuantity}

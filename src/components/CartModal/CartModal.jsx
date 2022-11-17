@@ -72,7 +72,10 @@ class CartModal extends React.Component {
                         </p>
                     </div>
                     <div className="cart-modal-buttons">
-                        <Link to="/cart" onClick={() => openModal()}>
+                        <Link
+                            to={`${this.props.category}/cart`}
+                            onClick={() => openModal()}
+                        >
                             <Button
                                 weight={"600"}
                                 size={"14px"}

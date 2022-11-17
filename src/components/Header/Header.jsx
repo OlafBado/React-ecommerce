@@ -34,6 +34,7 @@ class Header extends React.Component {
                             </Link>
                         </div>
                         <Actions
+                            category={this.props.category}
                             isModalOpen={this.props.isModalOpen}
                             openModal={this.props.openModal}
                             currency={this.props.currency}
