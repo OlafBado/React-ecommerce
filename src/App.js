@@ -3,6 +3,7 @@ import { Header, Products, ProductDetails, CartPage } from "./components";
 import { graphql } from "@apollo/client/react/hoc";
 import { categoriesAndCurrencies } from "./queries/queries";
 import { Routes, Route, Navigate } from "react-router-dom";
+import "./assets/media.css";
 
 class App extends React.Component {
     constructor(props) {
@@ -89,12 +90,6 @@ class App extends React.Component {
 
             const updatedCartItems = prevState.cartItems.map((product) => {
                 if (product.name === name) {
-                    // const cartItemValues = product.selectedOptions.map(
-                    //     (option) => option.value
-                    // );
-                    // const check = cartItemValues.every(
-                    //     (item, index) => item === productValues[index]
-                    // );
                     const check = product.selectedOptions
                         .map((option) => option.value)
                         .every((item, index) => item === productValues[index]);
@@ -132,13 +127,6 @@ class App extends React.Component {
 
             let updatedCartItems = prevState.cartItems.map((product) => {
                 if (product.name === name) {
-                    // const cartItemValues = product.selectedOptions.map(
-                    //     (option) => option.value
-                    // );
-                    // const check = cartItemValues.every(
-                    //     (item, index) => item === productValues[index]
-                    // );
-
                     const check = product.selectedOptions
                         .map((option) => option.value)
                         .every((item, index) => item === productValues[index]);
@@ -163,14 +151,6 @@ class App extends React.Component {
             .map((item) => item.selectedOptions.map((option) => option.value));
 
         if (selectedOptions) {
-            // const productValues = selectedOptions.map((item) => item.value);
-
-            // const isSame = sameProductsValues.map((product) => {
-            //     return product.every(
-            //         (item, index) => item === productValues[index]
-            //     );
-            // });
-
             const isSame = sameProductsValues.map((product) =>
                 product.every(
                     (item, index) =>
@@ -185,11 +165,6 @@ class App extends React.Component {
             const productValues = product.selectedOptions.map(
                 (item) => item.value
             );
-            // const isSame = sameProductsValues.map((product) => {
-            //     return product.every(
-            //         (item, index) => item === productValues[index]
-            //     );
-            // });
 
             const isSame = sameProductsValues.map((product) =>
                 product.every((item, index) => item === productValues[index])
@@ -204,17 +179,13 @@ class App extends React.Component {
         const isPresent =
             this.state.cartItems.findIndex((p) => p.name === product.name) !==
             -1;
-        console.log(this.state.cartItems);
         if (isPresent && product.selectedOptions) {
             const check = this.checkAttributes(product);
             if (check === "exists") {
                 this.incrementQuantity(product.name, product.selectedOptions);
             } else if (check === "not exists") {
-                this.setState((prevState) => ({
-                    cartItems: prevState.cartItems.concat({
-                        ...product,
-                        quantity: 1,
-                    }),
+                this.setState((prev) => ({
+                    cartItems: [...prev.cartItems, { ...product, quantity: 1 }],
                 }));
             }
         } else if (!product.selectedOptions) {
@@ -223,20 +194,16 @@ class App extends React.Component {
             if (check === "exists") {
                 this.incrementQuantity(product.name, selectedOptions);
             } else if (check === "not exists") {
-                this.setState((prevState) => ({
-                    cartItems: prevState.cartItems.concat({
-                        ...product,
-                        quantity: 1,
-                        selectedOptions: selectedOptions,
-                    }),
+                this.setState((prev) => ({
+                    cartItems: [
+                        ...prev.cartItems,
+                        { ...product, quantity: 1, selectedOptions },
+                    ],
                 }));
             }
         } else {
-            this.setState((prevState) => ({
-                cartItems: prevState.cartItems.concat({
-                    ...product,
-                    quantity: 1,
-                }),
+            this.setState((prev) => ({
+                cartItems: [...prev.cartItems, { ...product, quantity: 1 }],
             }));
         }
     };
@@ -332,32 +299,39 @@ class App extends React.Component {
                         path="/"
                         element={<Navigate to={`/${this.state.title}`} />}
                     />
-                    <Route path={`/${this.state.title}`}>
-                        <Route
-                            index
-                            element={
-                                <Products
-                                    category={this.state.title}
-                                    currency={this.state.currency}
-                                    setProductId={this.setProductId}
-                                    handlerAddToCart={this.handlerAddToCart}
-                                    findAmount={this.findAmount}
+                    {this.props.data.categories &&
+                        this.props.data.categories.map((cat) => (
+                            <Route path={cat.name} key={cat.name}>
+                                <Route
+                                    index
+                                    element={
+                                        <Products
+                                            category={cat.name}
+                                            currency={this.state.currency}
+                                            setProductId={this.setProductId}
+                                            handlerAddToCart={
+                                                this.handlerAddToCart
+                                            }
+                                            findAmount={this.findAmount}
+                                        />
+                                    }
                                 />
-                            }
-                        />
-                        <Route
-                            path=":id"
-                            element={
-                                <ProductDetails
-                                    currency={this.state.currency}
-                                    id={this.state.id}
-                                    handlerAddToCart={this.handlerAddToCart}
-                                    findAmount={this.findAmount}
-                                    category={this.state.title}
+                                <Route
+                                    path={`/${cat.name}/:id`}
+                                    element={
+                                        <ProductDetails
+                                            currency={this.state.currency}
+                                            id={this.state.id}
+                                            handlerAddToCart={
+                                                this.handlerAddToCart
+                                            }
+                                            findAmount={this.findAmount}
+                                            category={this.state.title}
+                                        />
+                                    }
                                 />
-                            }
-                        />
-                    </Route>
+                            </Route>
+                        ))}
                     <Route
                         path="/cart"
                         element={
@@ -373,10 +347,6 @@ class App extends React.Component {
                                 calculateTotalAmount={this.calculateTotalAmount}
                             />
                         }
-                    />
-                    <Route
-                        path="*"
-                        element={<Navigate to={`${this.state.title}`} />}
                     />
                 </Routes>
             </>

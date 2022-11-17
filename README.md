@@ -31,8 +31,8 @@ Visit this app by clicking on the link: https://react-ecommerce-shop-online.hero
 -   [/] other things about UX are good
 -   [/] write README.md in md format better, not HTML. It will give you more abilities for -beautiful readme | solution: html converted to md
 -   [/] fix all tabs and spaces. it’s important to keep your code beautiful. You can use eslint or prettier - for that | solution: prettier did the job
--   Write such logic in chains like .filter().map()… it will decrease amount of variables and will be easier to read
--   Don’t you just want to use .push() here?
--   Good that you fixed all errors in the console. Remove console.logs too
--   Use PureComponent instead of Component
--   Have style modules in a separate folder
+-   [/] Write such logic in chains like .filter().map()… it will decrease amount of variables and will be easier to read | solution: applied logic in chains
+-   [/] Don’t you just want to use .push() here? | solution: applied spread operator
+-   [/] Good that you fixed all errors in the console. Remove console.logs too | solution: I removed all console logs
+-   [/] Use PureComponent instead of Component | solution: replaced standard component with pure component for: ProductCard, DisplayCategories, Slider, Navigation
+-   [/] Have style modules in a separate folder | soplution: create folder for each component with styles.css inside
