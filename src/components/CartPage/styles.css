@@ -1,0 +1,27 @@
+.cart-list-summary {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    margin-top: 25px;
+}
+.summary {
+    height: 28px;
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 5px;
+    color: #1d1f22;
+}
+.values {
+    height: 28px;
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    margin-bottom: 6px;
+    margin-left: 5px;
+    color: #1d1f22;
+}

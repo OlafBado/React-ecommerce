@@ -1,0 +1,11 @@
+.data-handler {
+    margin-left: 10%;
+}
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    row-gap: 100px;
+    column-gap: 40px;
+}

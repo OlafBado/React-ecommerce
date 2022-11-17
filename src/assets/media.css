@@ -1,0 +1,252 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.padding {
+    padding: 3rem 0;
+}
+
+@media (max-width: 1000px) {
+    .product-details-images {
+        display: none;
+    }
+
+    .slider-details {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        position: absolute;
+        top: 50%;
+    }
+
+    .slider-button-details {
+        padding: 1.5rem 0.25rem;
+        background: rgb(164, 164, 164);
+        border: none;
+        transform: translate(-50%);
+        cursor: pointer;
+    }
+
+    .slider-details button:nth-child(2) {
+        transform: translate(50%);
+    }
+
+    .slider-button-details img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .product-details-main {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-details {
+        text-align: center;
+    }
+
+    .product-details-details {
+        margin: 30px 0px 0px 0px;
+    }
+
+    .product-details-image {
+        align-self: center;
+        max-height: 500px;
+        margin-left: 0;
+    }
+
+    .swatch-details,
+    .text-details {
+        justify-content: center;
+    }
+
+    .details-slider {
+        position: relative;
+    }
+}
+
+@media (max-width: 800px) {
+    .logo,
+    .header-navigation {
+        display: none;
+    }
+
+    .slider-button-details img {
+        height: 20px;
+        width: 20px;
+    }
+
+    .media-dropdown {
+        position: relative;
+        display: block;
+        padding: 1.15rem 0;
+    }
+
+    .media-dropdown-button {
+        display: block;
+        height: 41px;
+        width: 41px;
+        background: transparent;
+        border: none;
+        background: url(bars-solid.svg) no-repeat;
+        cursor: pointer;
+    }
+
+    .media-dropdown-menu {
+        position: absolute;
+        left: 0px;
+        top: calc(80% + 0.25rem);
+        background: #fff;
+        box-shadow: 0.2rem 0.2rem 0.5rem rgba(188, 188, 188, 0.606);
+    }
+
+    .header-navigation-button {
+        font-family: "Raleway";
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 120%;
+        width: 100%;
+        padding: 1rem 1.5rem;
+        color: black;
+    }
+
+    .active-navigation-button,
+    .header-navigation-button:hover {
+        background-color: #eeeeee;
+        color: black;
+        border: none;
+    }
+
+    .info-brand-details,
+    .info-name-details,
+    .info-price-details,
+    .info-brand-cart-page,
+    .info-name-cart-page,
+    .info-price-cart-page {
+        font-size: 20px;
+    }
+
+    .text-button-cart-page {
+        width: 53px;
+        height: 35px;
+    }
+
+    .swatch-button-cart-page {
+        width: 26px;
+        height: 26px;
+    }
+
+    .cart-item-image-quantity button,
+    .cart-item-image-quantity button img {
+        font-size: 20px;
+        width: 35px;
+        height: 35px;
+    }
+
+    .cart-item-image-quantity p {
+        font-size: 18px;
+    }
+
+    .cart-item-image {
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+
+    .cart-item-image-quantity {
+        flex-direction: row;
+        margin: 10px 0px 0px 0px;
+    }
+
+    .cart-item-image-slider img {
+        max-height: 288px;
+    }
+}
+
+#portal {
+    position: relative;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 1250px;
+}
+
+@media (max-width: 400px) {
+    .products-item {
+        width: 300px;
+    }
+
+    .cart-modal-buttons a {
+        width: 100%;
+    }
+
+    .cart-modal-info {
+        width: 100%;
+    }
+
+    .text-cart {
+        flex-wrap: wrap;
+    }
+
+    .cart-modal {
+        min-width: 269px;
+        max-height: 457px;
+    }
+
+    .details-brand,
+    .details-name {
+        font-size: 20px;
+    }
+
+    .text-button-details {
+        width: 53px;
+        height: 35px;
+    }
+
+    .swatch-button-details {
+        width: 26px;
+        height: 26px;
+        cursor: pointer;
+    }
+
+    .slider-button-details img {
+        height: 15px;
+        width: 15px;
+    }
+
+    .slider-button-details {
+        padding: 1rem 0.25rem;
+    }
+
+    .text-button-cart-page {
+        width: 43px;
+        height: 25px;
+    }
+
+    .swatch-button-cart-page {
+        width: 20px;
+        height: 20px;
+    }
+
+    .cart-item-image-slider img {
+        max-width: 100%;
+    }
+
+    .slider-cart {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        width: 56px;
+        height: 24px;
+        bottom: 16px;
+        right: 16px;
+    }
+}

@@ -1,0 +1,58 @@
+.cart-modal-item {
+    display: flex;
+    flex-direction: row;
+    height: 190px;
+    margin-bottom: 20px;
+}
+.cart-modal-info {
+    height: 190px;
+    width: 136px;
+    overflow-y: hidden;
+}
+.cart-modal-info:hover {
+    overflow-y: scroll;
+}
+
+.cart-modal-info::-webkit-scrollbar {
+    width: 3px;
+}
+
+.cart-modal-info::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.32);
+    border-radius: 100vw;
+}
+.cart-modal-image-quantity p {
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 160%;
+    color: #1d1f22;
+}
+
+.cart-modal-image > img {
+    width: 121px;
+    height: 190px;
+    object-fit: contain;
+}
+
+.cart-modal-image {
+    display: flex;
+    flex-direction: row;
+}
+
+.cart-modal-image-quantity {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 24px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.cart-modal-image-quantity button img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}

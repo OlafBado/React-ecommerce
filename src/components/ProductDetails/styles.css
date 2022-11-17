@@ -1,0 +1,85 @@
+.product-details-images {
+    max-width: 100px;
+    max-height: 511px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.product-details-images img {
+    width: 79px;
+    height: 80px;
+    margin-bottom: 32px;
+    cursor: pointer;
+}
+.product-details-main {
+    display: flex;
+    width: 1002px;
+    height: 595px;
+}
+.details-slider {
+    max-height: 511px;
+}
+.product-details-image {
+    max-width: 100%;
+    max-height: 100%;
+    align-self: flex-start;
+    margin-left: 20px;
+}
+.product-details-details {
+    width: 292px;
+    max-height: 595px;
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.details-brand {
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 27px;
+    color: #1d1f22;
+}
+.details-name {
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 27px;
+    margin-top: 16px;
+    margin-bottom: 40px;
+}
+.details-price {
+    font-family: "Roboto Condensed";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    text-transform: uppercase;
+    margin-top: 38px;
+    margin-bottom: 25px;
+}
+.details-amount {
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 18px;
+    color: #1d1f22;
+    margin-bottom: 25px;
+}
+.product-details-description {
+    min-height: 20px;
+    overflow: auto;
+    margin-top: 20px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 159.96%;
+    color: #1d1f22;
+}
+.product-details {
+    display: flex;
+    flex-direction: row;
+}

@@ -1,0 +1,60 @@
+.actions {
+    width: 250px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2em;
+    position: relative;
+}
+
+.actions-currency {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    width: 18px;
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 160%;
+    color: black;
+    cursor: pointer;
+}
+
+.actions-currency > img {
+    margin-left: 8px;
+}
+
+.actions-cart {
+    background: url(../../assets/Empty\ Cart.svg);
+    width: 20px;
+    height: 20px;
+    border: none;
+    position: relative;
+    cursor: pointer;
+}
+
+.badge {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    top: 0;
+    right: 0;
+    transform: translate(60%, -50%);
+    background-color: #1d1f22;
+    color: #ffffff;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+}

@@ -1,0 +1,16 @@
+.header-wrapper {
+    background-color: #ffffff;
+    position: sticky;
+    z-index: 2000;
+}
+.surface {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    background-color: #ffffff;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
