@@ -347,6 +347,7 @@ class App extends React.Component {
                             />
                         }
                     />
+                    <Route path="*" element={<div></div>} />
                 </Routes>
             </>
         );
