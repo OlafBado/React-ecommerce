@@ -3,7 +3,6 @@ import { Header, Products, ProductDetails, CartPage } from "./components";
 import { graphql } from "@apollo/client/react/hoc";
 import { categoriesAndCurrencies } from "./queries/queries";
 import { Routes, Route, Navigate } from "react-router-dom";
-import "./assets/media.css";
 
 class App extends React.Component {
     constructor(props) {
@@ -162,12 +161,12 @@ class App extends React.Component {
             const check = isSame.includes(true) ? "exists" : "not exists";
             return check;
         } else {
-            const productValues = product.selectedOptions.map(
-                (item) => item.value
-            );
-
-            const isSame = sameProductsValues.map((product) =>
-                product.every((item, index) => item === productValues[index])
+            const isSame = sameProductsValues.map((prod) =>
+                prod.every(
+                    (item, index) =>
+                        item ===
+                        product.selectedOptions.map((item) => item.value)[index]
+                )
             );
 
             const check = isSame.includes(true) ? "exists" : "not exists";

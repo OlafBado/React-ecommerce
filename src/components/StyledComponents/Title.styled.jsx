@@ -1,4 +1,4 @@
-import style from 'styled-components'
+import style from "styled-components";
 
 export const Title = style.h1`
     margin-bottom: ${(props) => props.margin};
@@ -7,4 +7,4 @@ export const Title = style.h1`
     font-weight: ${(props) => props.weight};
     font-size: ${(props) => props.size};
     line-height: ${(props) => props.height};
-`
+`;
