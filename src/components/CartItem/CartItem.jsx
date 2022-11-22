@@ -2,19 +2,18 @@ import React from "react";
 import { CartInfo, ChangeQuantity, Slider } from "..";
 import "./styles.css";
 
-class CartItem extends React.Component {
+class CartItem extends React.PureComponent {
     state = {
         index: 0,
     };
 
     changeImg = (index) => {
         this.setState({
-            index: index,
+            index,
         });
     };
 
     render() {
-        const { index } = this.state;
         return (
             <div className="cart-item-container">
                 <div>
@@ -36,10 +35,13 @@ class CartItem extends React.Component {
                         />
                     </div>
                     <div className="cart-item-image-slider">
-                        <img src={this.props.gallery[index]} alt="product" />
+                        <img
+                            src={this.props.gallery[this.state.index]}
+                            alt="product"
+                        />
                         {this.props.gallery.length > 1 ? (
                             <Slider
-                                index={index}
+                                index={this.state.index}
                                 changeImg={this.changeImg}
                                 galleryLength={this.props.gallery.length}
                                 place="cart"

@@ -3,43 +3,11 @@ import ReactDOM from "react-dom";
 import { CartModalItem, Button } from "..";
 import { Link } from "react-router-dom";
 import "./styles.css";
+import { calculateTotalQuantity } from "../../services/calculate/totalQuantity";
+import { calculateTotalAmount } from "../../services/calculate/totalAmount";
 
-class CartModal extends React.Component {
-    handleClickOutside = (e) => {
-        const element = e.composedPath()[0];
-        if (
-            element !== this.props.btnRef.current &&
-            !e.composedPath().find((e) => e.className === "cart-modal") &&
-            e.composedPath()[0].className !== "badge"
-        ) {
-            this.props.openModal();
-        }
-    };
-
-    componentDidMount() {
-        document.addEventListener("mousedown", this.handleClickOutside);
-    }
-
-    componentWillUnmount() {
-        document.removeEventListener("mousedown", this.handleClickOutside);
-    }
-
+class CartModal extends React.PureComponent {
     render() {
-        const {
-            items,
-            currency,
-            findAmount,
-            openModal,
-            incrementQuantity,
-            decrementQuantity,
-        } = this.props;
-        const totalQuantity = this.props.calculateTotalQuantity(items);
-        const totalAmount = this.props.calculateTotalAmount(
-            items,
-            currency,
-            findAmount
-        );
-
         return ReactDOM.createPortal(
             <>
                 <div className="overlay-styles"></div>
@@ -47,34 +15,39 @@ class CartModal extends React.Component {
                     <p>
                         My Bag
                         <span>
-                            , {totalQuantity}{" "}
-                            {totalQuantity === 1 ? "item" : "items"}
+                            , {calculateTotalQuantity(this.props.items)}{" "}
+                            {calculateTotalQuantity(this.props.items) === 1
+                                ? "item"
+                                : "items"}
                         </span>
                     </p>
                     <div className="cart-modal-items">
-                        {items.length === 0 ? (
+                        {this.props.items.length === 0 ? (
                             <h3 className="empty-bag">Your bag is empty...</h3>
                         ) : (
                             <CartModalItem
-                                findAmount={findAmount}
-                                currency={currency}
-                                incrementQuantity={incrementQuantity}
-                                decrementQuantity={decrementQuantity}
-                                items={items}
+                                findAmount={this.props.findAmount}
+                                currency={this.props.currency}
+                                incrementQuantity={this.props.incrementQuantity}
+                                decrementQuantity={this.props.decrementQuantity}
+                                items={this.props.items}
                             />
                         )}
                     </div>
                     <div className="cart-modal-description">
                         <p className="cart-modal-total">Total</p>
                         <p className="cart-modal-amount">
-                            {currency}
-                            {totalAmount}
+                            {this.props.currency}
+                            {calculateTotalAmount(
+                                this.props.items,
+                                this.props.currency
+                            )}
                         </p>
                     </div>
                     <div className="cart-modal-buttons">
                         <Link
                             to={`${this.props.category}/cart`}
-                            onClick={() => openModal()}
+                            onClick={() => this.props.openModal()}
                         >
                             <Button
                                 weight={"600"}

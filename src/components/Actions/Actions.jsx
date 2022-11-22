@@ -1,8 +1,9 @@
 import React from "react";
-import { CurrencySwitcher, CartModal } from "..";
+import { CurrencySwitcherContainer, CartModal, CartModalContainer } from "..";
 import vectorDown from "../../assets/Vector-down.svg";
 import vectorUp from "../../assets/Vector-up.svg";
 import "./styles.css";
+import { calculateTotalQuantity } from "../../services/calculate/totalQuantity";
 
 class Actions extends React.PureComponent {
     constructor(props) {
@@ -11,23 +12,26 @@ class Actions extends React.PureComponent {
         this.imgRef = React.createRef();
     }
 
-    render() {
-        const totalQuantity = this.props.calculateTotalQuantity(
-            this.props.items
-        );
+    // handleTotalQuantity = () =>
+    //     this.props.calculateTotalQuantity(this.props.items);
 
+    handleCurrencySwitcher = () => this.props.openCurrencySwitcher();
+
+    handleModal = () => this.props.openModal();
+
+    render() {
         return (
             <div className="actions">
                 <button
                     ref={this.buttonRef}
                     className="actions-currency"
-                    onClick={() => this.props.openCurrencySwitcher()}
+                    onClick={this.handleCurrencySwitcher}
                 >
                     {this.props.currency}
                     <img
                         ref={this.imgRef}
                         src={
-                            this.props.isCurrencySwitcherOpen === true
+                            this.props.isCurrencySwitcherOpen
                                 ? vectorUp
                                 : vectorDown
                         }
@@ -36,16 +40,18 @@ class Actions extends React.PureComponent {
                 </button>
                 <button
                     ref={this.props.btnRef}
-                    onClick={() => this.props.openModal()}
+                    onClick={this.handleModal}
                     className="actions-cart"
                 >
-                    {totalQuantity >= 1 ? (
-                        <div className="badge">{totalQuantity}</div>
+                    {calculateTotalQuantity(this.props.items) >= 1 ? (
+                        <div className="badge">
+                            {calculateTotalQuantity(this.props.items)}
+                        </div>
                     ) : null}
                 </button>
 
                 {this.props.isCurrencySwitcherOpen ? (
-                    <CurrencySwitcher
+                    <CurrencySwitcherContainer
                         currencies={this.props.currencies}
                         setCurrency={this.props.setCurrency}
                         currency={this.props.currency}
@@ -55,7 +61,7 @@ class Actions extends React.PureComponent {
                     />
                 ) : null}
                 {this.props.isModalOpen ? (
-                    <CartModal
+                    <CartModalContainer
                         category={this.props.category}
                         openModal={this.props.openModal}
                         currency={this.props.currency}

@@ -14,26 +14,23 @@ class Attributes extends React.Component {
     }
 
     ifExists = (attribute, value) => {
-        if (Object.keys(this.state.selectedOptions).length !== 0) {
-            let selectedOptions = this.state.selectedOptions.find((element) => {
-                if (
-                    element.attribute === attribute &&
-                    element.value === value
-                ) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
-            return selectedOptions;
-        }
+        if (Object.keys(this.state.selectedOptions).length === 0) return;
+        const selectedOptions = this.state.selectedOptions.find((element) => {
+            if (element.attribute === attribute && element.value === value) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+        return selectedOptions;
     };
 
+    handleVariantChange = (e) => this.props.variantChange(e);
+
     render() {
-        const data = this.props.attributes;
         return (
             <>
-                {data.map((attribute) => {
+                {this.props.attributes.map((attribute) => {
                     return (
                         <div key={attribute.id} className="text-div">
                             <p
@@ -55,10 +52,8 @@ class Attributes extends React.Component {
                                                 key={index}
                                                 onClick={
                                                     this.props.variantChange
-                                                        ? (e) =>
-                                                              this.props.variantChange(
-                                                                  e
-                                                              )
+                                                        ? this
+                                                              .handleVariantChange
                                                         : null
                                                 }
                                                 className={
@@ -93,10 +88,8 @@ class Attributes extends React.Component {
                                                 }
                                                 onClick={
                                                     this.props.variantChange
-                                                        ? (e) =>
-                                                              this.props.variantChange(
-                                                                  e
-                                                              )
+                                                        ? this
+                                                              .handleVariantChange
                                                         : null
                                                 }
                                                 style={{

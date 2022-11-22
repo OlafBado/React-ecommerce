@@ -9,6 +9,7 @@
     width: 79px;
     height: 80px;
     margin-bottom: 32px;
+    object-fit: contain;
     cursor: pointer;
 }
 .product-details-main {
@@ -78,8 +79,4 @@
     font-size: 16px;
     line-height: 159.96%;
     color: #1d1f22;
-}
-.product-details {
-    display: flex;
-    flex-direction: row;
 }

@@ -1,10 +1,17 @@
 import React from "react";
-import { Header, Products, ProductDetails, CartPage } from "./components";
+import {
+    Header,
+    Products,
+    ProductDetails,
+    CartPage,
+    ProductDetailsContainer,
+    ProductsContainer,
+} from "./components";
 import { graphql } from "@apollo/client/react/hoc";
 import { categoriesAndCurrencies } from "./queries/queries";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-class App extends React.Component {
+class App extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -20,7 +27,7 @@ class App extends React.Component {
 
     static getDerivedStateFromProps = (nextProps, prevState) => {
         if (
-            nextProps.data.loading === false &&
+            !nextProps.data.loading &&
             prevState.currency === "" &&
             prevState.title === ""
         ) {
@@ -67,14 +74,12 @@ class App extends React.Component {
         const currencyDetails = product.prices.find(
             (product) => product.currency.symbol === currency
         );
-        if (currencyDetails !== undefined) {
-            const { amount } = currencyDetails;
-            return amount;
-        }
+        if (!currencyDetails) return;
+        return currencyDetails.amount;
     };
 
     handlerSetAttributes(product) {
-        let selectedAttributes = product.attributes.map((p) => {
+        const selectedAttributes = product.attributes.map((p) => {
             return {
                 attribute: p.id,
                 value: p.items[0].value,
@@ -88,18 +93,15 @@ class App extends React.Component {
             const productValues = selectedOptions.map((item) => item.value);
 
             const updatedCartItems = prevState.cartItems.map((product) => {
-                if (product.name === name) {
-                    const check = product.selectedOptions
-                        .map((option) => option.value)
-                        .every((item, index) => item === productValues[index]);
-                    if (check === true) {
-                        return {
-                            ...product,
-                            quantity: product.quantity + 1,
-                        };
-                    }
-                }
-                return product;
+                if (product.name !== name) return product;
+                const check = product.selectedOptions
+                    .map((option) => option.value)
+                    .every((item, index) => item === productValues[index]);
+                if (!check) return product;
+                return {
+                    ...product,
+                    quantity: product.quantity + 1,
+                };
             });
             return {
                 cartItems: updatedCartItems,
@@ -124,19 +126,16 @@ class App extends React.Component {
                 };
             }
 
-            let updatedCartItems = prevState.cartItems.map((product) => {
-                if (product.name === name) {
-                    const check = product.selectedOptions
-                        .map((option) => option.value)
-                        .every((item, index) => item === productValues[index]);
-                    if (check === true) {
-                        return {
-                            ...product,
-                            quantity: product.quantity - 1,
-                        };
-                    }
-                }
-                return product;
+            const updatedCartItems = prevState.cartItems.map((product) => {
+                if (product.name !== name) return product;
+                const check = product.selectedOptions
+                    .map((option) => option.value)
+                    .every((item, index) => item === productValues[index]);
+                if (!check) return product;
+                return {
+                    ...product,
+                    quantity: product.quantity - 1,
+                };
             });
             return {
                 cartItems: updatedCartItems,
@@ -158,8 +157,7 @@ class App extends React.Component {
                 )
             );
 
-            const check = isSame.includes(true) ? "exists" : "not exists";
-            return check;
+            return isSame.includes(true) ? "exists" : "not exists";
         } else {
             const isSame = sameProductsValues.map((prod) =>
                 prod.every(
@@ -169,8 +167,7 @@ class App extends React.Component {
                 )
             );
 
-            const check = isSame.includes(true) ? "exists" : "not exists";
-            return check;
+            return isSame.includes(true) ? "exists" : "not exists";
         }
     };
 
@@ -182,7 +179,7 @@ class App extends React.Component {
             const check = this.checkAttributes(product);
             if (check === "exists") {
                 this.incrementQuantity(product.name, product.selectedOptions);
-            } else if (check === "not exists") {
+            } else {
                 this.setState((prev) => ({
                     cartItems: [...prev.cartItems, { ...product, quantity: 1 }],
                 }));
@@ -192,7 +189,7 @@ class App extends React.Component {
             const check = this.checkAttributes(product, selectedOptions);
             if (check === "exists") {
                 this.incrementQuantity(product.name, selectedOptions);
-            } else if (check === "not exists") {
+            } else {
                 this.setState((prev) => ({
                     cartItems: [
                         ...prev.cartItems,
@@ -214,7 +211,7 @@ class App extends React.Component {
     };
 
     openModal = () => {
-        if (this.state.isModalOpen === false) {
+        if (!this.state.isModalOpen) {
             this.setState({
                 isModalOpen: true,
                 isCurrencySwitcherOpen: false,
@@ -227,7 +224,7 @@ class App extends React.Component {
     };
 
     openCurrencySwitcher = () => {
-        if (this.state.isCurrencySwitcherOpen === false) {
+        if (!this.state.isCurrencySwitcherOpen) {
             this.setState({
                 isCurrencySwitcherOpen: true,
                 isModalOpen: false,
@@ -242,30 +239,27 @@ class App extends React.Component {
     setCurrency = (currency) => {
         this.setState({
             currency: currency,
-        });
-        this.setState({
             isCurrencySwitcherOpen: false,
         });
     };
 
     setProductId = (id) => {
         this.setState({
-            id: id,
+            id,
         });
     };
 
     calculateTotalQuantity = (items) => {
-        if (items) {
-            const totalQuantity = items.reduce((acc, cv) => {
-                acc = acc + cv.quantity;
-                return acc;
-            }, 0);
-            return totalQuantity;
-        }
+        if (!items) return;
+        const totalQuantity = items.reduce((acc, cv) => {
+            acc = acc + cv.quantity;
+            return acc;
+        }, 0);
+        return totalQuantity;
     };
 
     calculateTotalAmount = (items, currency, findAmount) => {
-        let totalAmount = items.reduce((acc, cv) => {
+        const totalAmount = items.reduce((acc, cv) => {
             const amount = findAmount(cv, currency);
             acc = acc + amount * cv.quantity;
             return Math.round(acc * 100) / 100;
@@ -273,6 +267,7 @@ class App extends React.Component {
         return totalAmount;
     };
     render() {
+        console.log("app");
         return (
             <>
                 <Header
@@ -304,7 +299,7 @@ class App extends React.Component {
                                 <Route
                                     index
                                     element={
-                                        <Products
+                                        <ProductsContainer
                                             category={cat.name}
                                             currency={this.state.currency}
                                             setProductId={this.setProductId}
@@ -318,7 +313,7 @@ class App extends React.Component {
                                 <Route
                                     path={`/${cat.name}/:id`}
                                     element={
-                                        <ProductDetails
+                                        <ProductDetailsContainer
                                             currency={this.state.currency}
                                             id={this.state.id}
                                             handlerAddToCart={

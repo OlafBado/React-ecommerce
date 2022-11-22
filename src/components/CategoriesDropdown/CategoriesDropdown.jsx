@@ -1,8 +1,8 @@
-import { DisplayCategories } from "..";
+import { CategoriesContainer } from "..";
 import React from "react";
 import "./styles.css";
 
-class CategoriesDropdown extends React.Component {
+class CategoriesDropdown extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -45,7 +45,7 @@ class CategoriesDropdown extends React.Component {
                     style={{ display: this.state.isOpen ? "block" : "none" }}
                 >
                     {this.props ? (
-                        <DisplayCategories
+                        <CategoriesContainer
                             changeCategory={this.props.changeCategory}
                             categories={this.props.categories}
                             category={this.props.category}

@@ -23,16 +23,18 @@ Visit this app by clicking on the link: https://react-ecommerce-shop-online.hero
 
 ## TODO
 
--   [/] fix images dimensions | solution: set 'object-fit: contain' on image
--   [/] The button must work | solution: wrap logo with link
--   [/] add cursor pointer to all clickable elements solution: set 'cursor:pointer' on clickable elements
--   [/] - / - buttons aren’t on one line for different cards | solution: remove max-height on img
--   [/] current category must be in URL | solution: redirect the user immediately after entering the page
--   [/] other things about UX are good
--   [/] write README.md in md format better, not HTML. It will give you more abilities for -beautiful readme | solution: html converted to md
--   [/] fix all tabs and spaces. it’s important to keep your code beautiful. You can use eslint or prettier - for that | solution: prettier did the job
--   [/] Write such logic in chains like .filter().map()… it will decrease amount of variables and will be easier to read | solution: applied logic in chains
--   [/] Don’t you just want to use .push() here? | solution: applied spread operator
--   [/] Good that you fixed all errors in the console. Remove console.logs too | solution: I removed all console logs
--   [/] Use PureComponent instead of Component | solution: replaced standard component with pure component for: ProductCard, DisplayCategories, Slider, Navigation
--   [/] Have style modules in a separate folder | soplution: create folder for each component with styles.css inside
+-   [/] Check all images and make sure the dimensions aren’t get broken (image 1) | solution: object-fit: contain
+-   [] The URL for the cart page must be “/cart”, sometimes it’s “/tech/cart” or “/clothes/cart” and so on
+-   [] installation steps must be in README
+-   [/] If possible you need to use const as much as possible. Avoid let if you can. (image 2) | solution: changed Attributes, ProductDatails, Slider, App
+-   [/] Improve naming. What X means? (image 3) | solution: fixed
+-   [/] you can just return in this case. no need to declare a variable (image 4) | solution: fixed
+-   [/] no need to write === false. you can omit it and write “ if (!this.state.isModalOpen) {}“ (image 5) | solution : fixed app
+-   [/] Call setState only once if you need to change multiple state properties (image 6) | solution: fixed app
+-   [/] instead of id: id. You can just write id (image 7) | solution: fixed app
+-   [/] inverse your if logic everywhere. instead of this you can “if (!items) return;” ….. (image 8) | solution: changed ProductDetails, App:findAmount, incrementQuantity, decrementQuantity,
+-   [/] Again, please, don’t use Component. Always use PureComponent | solution: add cartInfo, cartItem, cartPage, changeQuantity, currencySwitcher, header, outsideClick, productDetails, products, app
+-   [] Create Container components for business logic. Rendering components must only return JSX, it’s a best practice | solution: container for cartModal, categories, currencySwitcher, productDetails, products
+-   [] split your render methods (image 9)
+-   [] avoid inline styles and the styles as props. Because it’s hard to rewrite such styles. if you have conditional styling, change the class name depending on the data. But keep your styles in css
+-   [] thank you for using refs!

@@ -1,16 +1,3 @@
-.dropdown {
-    position: absolute;
-    background-color: #ffffff;
-    top: 30px;
-    right: -50px;
-    height: auto;
-}
-.dropdown-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 0.4rem;
-}
 .dropdown-element {
     display: flex;
     padding: 0.5rem 2rem;

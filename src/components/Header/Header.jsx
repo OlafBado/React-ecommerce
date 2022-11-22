@@ -4,11 +4,13 @@ import { Navigation, Actions, CategoriesDropdown } from "..";
 import { Link } from "react-router-dom";
 import "./styles.css";
 
-class Header extends React.Component {
+class Header extends React.PureComponent {
     constructor(props) {
         super(props);
         this.btnRef = React.createRef();
     }
+
+    handleChangeCategory = () => this.props.changeCategory("all");
 
     render() {
         return (
@@ -26,10 +28,7 @@ class Header extends React.Component {
                             category={this.props.category}
                         />
                         <div className="logo">
-                            <Link
-                                to="/all"
-                                onClick={() => this.props.changeCategory("all")}
-                            >
+                            <Link to="/all" onClick={this.handleChangeCategory}>
                                 <img src={logo} alt="logo" />
                             </Link>
                         </div>

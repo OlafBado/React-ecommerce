@@ -6,13 +6,13 @@ import "./styles.css";
 class Slider extends React.PureComponent {
     handleImgChange(direction) {
         if (direction === "next") {
-            let newSlide =
+            const newSlide =
                 this.props.index === this.props.galleryLength - 1
                     ? 0
                     : this.props.index + 1;
             this.props.changeImg(newSlide);
         } else {
-            let newSlide =
+            const newSlide =
                 this.props.index === 0
                     ? this.props.galleryLength - 1
                     : this.props.index - 1;

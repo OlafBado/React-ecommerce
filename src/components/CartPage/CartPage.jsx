@@ -1,28 +1,12 @@
 import React from "react";
 import { Title, Button, CartItem } from "..";
 import "./styles.css";
+import { calculateTax } from "../../services/calculate/tax";
+import { calculateTotalAmount } from "../../services/calculate/totalAmount";
+import { calculateTotalQuantity } from "../../services/calculate/totalQuantity";
 
-class CartPage extends React.Component {
-    calculateTax(totalAmount) {
-        const tax = totalAmount * 0.21;
-        return Math.round(tax * 100) / 100;
-    }
-
+class CartPage extends React.PureComponent {
     render() {
-        const {
-            currency,
-            items,
-            findAmount,
-            incrementQuantity,
-            decrementQuantity,
-        } = this.props;
-        const totalQuantity = this.props.calculateTotalQuantity(items);
-        const totalAmount = this.props.calculateTotalAmount(
-            items,
-            currency,
-            findAmount
-        );
-
         return (
             <div className="container padding">
                 <Title
@@ -34,15 +18,15 @@ class CartPage extends React.Component {
                     CART
                 </Title>
                 <div className="cart-list">
-                    {items.map((item, index) => {
+                    {this.props.items.map((item, index) => {
                         return (
                             <CartItem
                                 {...item}
                                 key={index}
-                                findAmount={findAmount}
-                                currency={currency}
-                                incrementQuantity={incrementQuantity}
-                                decrementQuantity={decrementQuantity}
+                                findAmount={this.props.findAmount}
+                                currency={this.props.currency}
+                                incrementQuantity={this.props.incrementQuantity}
+                                decrementQuantity={this.props.decrementQuantity}
                             />
                         );
                     })}
@@ -54,13 +38,23 @@ class CartPage extends React.Component {
                         </div>
                         <div className="cart-list-summary-values">
                             <p className="values">
-                                {currency}
-                                {this.calculateTax(totalAmount)}
+                                {this.props.currency}
+                                {calculateTax(
+                                    calculateTotalAmount(
+                                        this.props.items,
+                                        this.props.currency
+                                    )
+                                )}
                             </p>
-                            <p className="values">{totalQuantity}</p>
                             <p className="values">
-                                {currency}
-                                {totalAmount}
+                                {calculateTotalQuantity(this.props.items)}
+                            </p>
+                            <p className="values">
+                                {this.props.currency}
+                                {calculateTotalAmount(
+                                    this.props.items,
+                                    this.props.currency
+                                )}
                             </p>
                         </div>
                     </div>

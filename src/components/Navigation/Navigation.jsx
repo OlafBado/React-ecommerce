@@ -1,5 +1,5 @@
 import React from "react";
-import { DisplayCategories } from "..";
+import { CategoriesContainer } from "..";
 import "./styles.css";
 
 class Navigation extends React.PureComponent {
@@ -7,7 +7,7 @@ class Navigation extends React.PureComponent {
         return (
             <div className="header-navigation">
                 {this.props ? (
-                    <DisplayCategories
+                    <CategoriesContainer
                         changeCategory={this.props.changeCategory}
                         categories={this.props.categories}
                         category={this.props.category}

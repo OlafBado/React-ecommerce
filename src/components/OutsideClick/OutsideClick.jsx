@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import "./styles.css";
 
-export default class OutsideAlerter extends Component {
+export default class OutsideAlerter extends React.PureComponent {
     constructor(props) {
         super(props);
 

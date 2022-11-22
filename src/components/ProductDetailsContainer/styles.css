@@ -1,0 +1,9 @@
+.product-details {
+    display: flex;
+    flex-direction: row;
+}
+
+.data-handler {
+    margin-top: 5%;
+    margin-left: 20%;
+}
