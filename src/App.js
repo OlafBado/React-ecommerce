@@ -1,8 +1,6 @@
 import React from "react";
 import {
     Header,
-    Products,
-    ProductDetails,
     CartPage,
     ProductDetailsContainer,
     ProductsContainer,
@@ -69,14 +67,6 @@ class App extends React.PureComponent {
             this.handleUpdateLocalStorage
         );
     }
-
-    findAmount = (product, currency) => {
-        const currencyDetails = product.prices.find(
-            (product) => product.currency.symbol === currency
-        );
-        if (!currencyDetails) return;
-        return currencyDetails.amount;
-    };
 
     handlerSetAttributes(product) {
         const selectedAttributes = product.attributes.map((p) => {
@@ -248,26 +238,9 @@ class App extends React.PureComponent {
             id,
         });
     };
-
-    calculateTotalQuantity = (items) => {
-        if (!items) return;
-        const totalQuantity = items.reduce((acc, cv) => {
-            acc = acc + cv.quantity;
-            return acc;
-        }, 0);
-        return totalQuantity;
-    };
-
-    calculateTotalAmount = (items, currency, findAmount) => {
-        const totalAmount = items.reduce((acc, cv) => {
-            const amount = findAmount(cv, currency);
-            acc = acc + amount * cv.quantity;
-            return Math.round(acc * 100) / 100;
-        }, 0);
-        return totalAmount;
-    };
     render() {
-        console.log("app");
+        if (this.props.data.loading)
+            return <div className="data-handler">Loading...</div>;
         return (
             <>
                 <Header
@@ -281,19 +254,16 @@ class App extends React.PureComponent {
                     openCurrencySwitcher={this.openCurrencySwitcher}
                     isCurrencySwitcherOpen={this.state.isCurrencySwitcherOpen}
                     setCurrency={this.setCurrency}
-                    findAmount={this.findAmount}
                     incrementQuantity={this.incrementQuantity}
                     decrementQuantity={this.decrementQuantity}
                     items={this.state.cartItems}
-                    calculateTotalQuantity={this.calculateTotalQuantity}
-                    calculateTotalAmount={this.calculateTotalAmount}
                 />
                 <Routes>
                     <Route
                         path="/"
                         element={<Navigate to={`/${this.state.title}`} />}
                     />
-                    {this.props.data.categories &&
+                    {/* {this.props.data.categories &&
                         this.props.data.categories.map((cat) => (
                             <Route path={cat.name} key={cat.name}>
                                 <Route
@@ -306,7 +276,6 @@ class App extends React.PureComponent {
                                             handlerAddToCart={
                                                 this.handlerAddToCart
                                             }
-                                            findAmount={this.findAmount}
                                         />
                                     }
                                 />
@@ -319,7 +288,6 @@ class App extends React.PureComponent {
                                             handlerAddToCart={
                                                 this.handlerAddToCart
                                             }
-                                            findAmount={this.findAmount}
                                             category={this.state.title}
                                         />
                                     }
@@ -328,7 +296,6 @@ class App extends React.PureComponent {
                                     path={`/${cat.name}/cart`}
                                     element={
                                         <CartPage
-                                            findAmount={this.findAmount}
                                             currency={this.state.currency}
                                             incrementQuantity={
                                                 this.incrementQuantity
@@ -337,18 +304,50 @@ class App extends React.PureComponent {
                                                 this.decrementQuantity
                                             }
                                             items={this.state.cartItems}
-                                            calculateTotalQuantity={
-                                                this.calculateTotalQuantity
-                                            }
-                                            calculateTotalAmount={
-                                                this.calculateTotalAmount
-                                            }
                                         />
                                     }
                                 />
                             </Route>
+                        ))} */}
+                    <Route
+                        path="/:id"
+                        element={
+                            <ProductDetailsContainer
+                                currency={this.state.currency}
+                                id={this.state.id}
+                                handlerAddToCart={this.handlerAddToCart}
+                                category={this.state.title}
+                            />
+                        }
+                    />
+                    {this.props.data.categories &&
+                        this.props.data.categories.map((cat) => (
+                            <Route
+                                key={cat.name}
+                                path={`/${cat.name}`}
+                                exact
+                                element={
+                                    <ProductsContainer
+                                        category={this.state.title}
+                                        currency={this.state.currency}
+                                        setProductId={this.setProductId}
+                                        handlerAddToCart={this.handlerAddToCart}
+                                    />
+                                }
+                            />
                         ))}
-                    <Route path="*" element={<div></div>} />
+                    <Route
+                        path="/cart"
+                        element={
+                            <CartPage
+                                currency={this.state.currency}
+                                incrementQuantity={this.incrementQuantity}
+                                decrementQuantity={this.decrementQuantity}
+                                items={this.state.cartItems}
+                            />
+                        }
+                    />
+                    <Route path="*" element={<div>Not found..</div>} />
                 </Routes>
             </>
         );

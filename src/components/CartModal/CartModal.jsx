@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { CartModalItem, Button } from "..";
+import { CartModalItem } from "..";
 import { Link } from "react-router-dom";
 import "./styles.css";
 import { calculateTotalQuantity } from "../../services/calculate/totalQuantity";
 import { calculateTotalAmount } from "../../services/calculate/totalAmount";
 
 class CartModal extends React.PureComponent {
+    handleModal = () => this.props.openModal();
     render() {
         return ReactDOM.createPortal(
             <>
@@ -26,7 +27,6 @@ class CartModal extends React.PureComponent {
                             <h3 className="empty-bag">Your bag is empty...</h3>
                         ) : (
                             <CartModalItem
-                                findAmount={this.props.findAmount}
                                 currency={this.props.currency}
                                 incrementQuantity={this.props.incrementQuantity}
                                 decrementQuantity={this.props.decrementQuantity}
@@ -45,33 +45,14 @@ class CartModal extends React.PureComponent {
                         </p>
                     </div>
                     <div className="cart-modal-buttons">
-                        <Link
-                            to={`${this.props.category}/cart`}
-                            onClick={() => this.props.openModal()}
-                        >
-                            <Button
-                                weight={"600"}
-                                size={"14px"}
-                                color={"#1D1F22"}
-                                border={"1px solid black"}
-                                width={"140px"}
-                                height={"43px"}
-                                bg={"transparent"}
-                            >
+                        <Link to="/cart" onClick={this.handleModal}>
+                            <button className="cart-modal-button">
                                 VIEW BAG
-                            </Button>
+                            </button>
                         </Link>
-                        <Button
-                            weight={"600"}
-                            size={"14px"}
-                            color={"#FFFFFF"}
-                            border={"none"}
-                            width={"140px"}
-                            height={"43px"}
-                            bg={"#5ECE7B"}
-                        >
+                        <button className="cart-modal-button cart-modal-button--checkout">
                             CHECK OUT
-                        </Button>
+                        </button>
                     </div>
                 </div>
             </>,

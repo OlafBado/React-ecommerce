@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "@apollo/client/react/hoc";
 import { getProducts } from "../../queries/queries";
-import { ProductCard, Title } from "..";
+import { ProductCard } from "..";
 import "./styles.css";
 
 class ProductsContainer extends React.PureComponent {
@@ -11,14 +11,9 @@ class ProductsContainer extends React.PureComponent {
             return <div className="data-handler">Loading..</div>;
         return (
             <div className="container padding">
-                <Title
-                    margin={"88px"}
-                    weight={"400"}
-                    size={"42px"}
-                    height={"67px"}
-                >
+                <h1 className="products-container-title">
                     {this.capitalizeFirst(this.props.category)}
-                </Title>
+                </h1>
                 <div className="products">
                     {this.props.data?.category?.products?.map((product) => (
                         <ProductCard
@@ -26,6 +21,8 @@ class ProductsContainer extends React.PureComponent {
                             product={product}
                             currency={this.props.currency}
                             category={this.props.category}
+                            handlerAddToCart={this.props.handlerAddToCart}
+                            setProductId={this.props.setProductId}
                         />
                     ))}
                 </div>

@@ -249,4 +249,12 @@
         bottom: 16px;
         right: 16px;
     }
+
+    .cart-modal-button,
+    .cart-modal-button--checkout,
+    .cart-page-button,
+    .product-details-button,
+    .product-details-button--disabled {
+        width: 100%;
+    }
 }

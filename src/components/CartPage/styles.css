@@ -25,3 +25,25 @@
     margin-left: 5px;
     color: #1d1f22;
 }
+
+.cart-page-title {
+    margin-bottom: 55px;
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.cart-page-button {
+    background: #5ece7b;
+    min-height: 43px;
+    width: 279px;
+    border: none;
+    color: #ffffff;
+    font-family: "Raleway";
+    font-style: "normal";
+    font-size: 14px;
+    font-weight: 600;
+    cursor: default;
+}

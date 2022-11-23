@@ -1,6 +1,7 @@
 import React from "react";
 import { Attributes } from "..";
 import "./styles.css";
+import { findAmount } from "../../services/calculate/amount";
 
 class CartInfo extends React.PureComponent {
     render() {
@@ -14,10 +15,7 @@ class CartInfo extends React.PureComponent {
                 </p>
                 <p className={`info-price-${this.props.place}`}>
                     {this.props.currency}
-                    {this.props.findAmount(
-                        this.props.product,
-                        this.props.currency
-                    )}
+                    {findAmount(this.props.product, this.props.currency)}
                 </p>
                 <Attributes
                     place={this.props.place}

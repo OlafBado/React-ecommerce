@@ -1,5 +1,5 @@
 import React from "react";
-import { Title, Button, CartItem } from "..";
+import { CartItem } from "..";
 import "./styles.css";
 import { calculateTax } from "../../services/calculate/tax";
 import { calculateTotalAmount } from "../../services/calculate/totalAmount";
@@ -9,21 +9,13 @@ class CartPage extends React.PureComponent {
     render() {
         return (
             <div className="container padding">
-                <Title
-                    margin={"55px"}
-                    weight={"700"}
-                    size={"32px"}
-                    height={"40px"}
-                >
-                    CART
-                </Title>
+                <h1 className="cart-page-title">CART</h1>
                 <div className="cart-list">
                     {this.props.items.map((item, index) => {
                         return (
                             <CartItem
                                 {...item}
                                 key={index}
-                                findAmount={this.props.findAmount}
                                 currency={this.props.currency}
                                 incrementQuantity={this.props.incrementQuantity}
                                 decrementQuantity={this.props.decrementQuantity}
@@ -58,17 +50,7 @@ class CartPage extends React.PureComponent {
                             </p>
                         </div>
                     </div>
-                    <Button
-                        weight={"600"}
-                        size={"14px"}
-                        color={"#FFFFFF"}
-                        border={"none"}
-                        width={"279px"}
-                        height={"43px"}
-                        bg={"#5ECE7B"}
-                    >
-                        ORDER
-                    </Button>
+                    <button className="cart-page-button">ORDER</button>
                 </div>
             </div>
         );

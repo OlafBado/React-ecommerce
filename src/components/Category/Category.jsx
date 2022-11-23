@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import "./styles.css";
 
 const active = {
@@ -10,10 +10,13 @@ const active = {
 class Category extends React.PureComponent {
     render() {
         return (
-            <NavLink
-                to={this.props.name}
-                className="nav-link"
-                style={({ isActive }) => (isActive ? active : null)}
+            <Link
+                to={`/${this.props.name}`}
+                className={
+                    this.props.category === this.props.name
+                        ? "nav-link nav-link--active"
+                        : "nav-link"
+                }
             >
                 <button
                     onClick={
@@ -28,7 +31,7 @@ class Category extends React.PureComponent {
                 >
                     {this.props.name}
                 </button>
-            </NavLink>
+            </Link>
         );
     }
 }

@@ -6,3 +6,12 @@
     row-gap: 100px;
     column-gap: 40px;
 }
+
+.products-container-title {
+    margin-bottom: 88px;
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 67px;
+}

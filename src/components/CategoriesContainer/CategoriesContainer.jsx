@@ -10,6 +10,7 @@ class CategoriesContainer extends React.PureComponent {
                 key={index}
                 changeCategory={this.props.changeCategory}
                 closeDropdown={this.props.closeDropdown}
+                category={this.props.category}
             />
         ));
     }

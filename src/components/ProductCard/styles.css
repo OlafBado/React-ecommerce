@@ -12,21 +12,28 @@
 .products-item:hover .circle-icon {
     display: block;
 }
-.products-item-img {
+
+.products-item-img-container {
     height: 330px;
     margin-bottom: 24px;
     position: relative;
 }
 
-.products-item-img > img {
+.products-item-img {
     width: 100%;
     height: 100%;
     object-fit: contain;
 }
+
+.products-item-img--disabled {
+    opacity: 0.5;
+}
+
 .circle-icon-button {
     background-color: #ffffff;
     border: none;
 }
+
 .circle-icon {
     cursor: pointer;
     position: absolute;
@@ -36,6 +43,7 @@
     bottom: -30px;
     display: none;
 }
+
 .text-on-image {
     position: absolute;
     left: 25.42%;
@@ -49,6 +57,7 @@
     font-size: 24px;
     line-height: 160%;
 }
+
 .products-item-description-name {
     font-family: "Raleway";
     font-style: normal;
@@ -63,4 +72,16 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 160%;
+}
+
+.product-item-link {
+    text-decoration: none;
+}
+
+.products-item-description {
+    color: #1d1f22;
+}
+
+.products-item-description--disabled {
+    color: #8d8f9a;
 }

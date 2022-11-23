@@ -80,3 +80,22 @@
     line-height: 159.96%;
     color: #1d1f22;
 }
+
+.product-details-button {
+    background: rgba(94, 206, 123, 1);
+    min-height: 52px;
+    width: 100%;
+    border: none;
+    color: #ffffff;
+    font-family: "Raleway";
+    font-style: "normal";
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.product-details-button--disabled {
+    color: #8d8f9a;
+    background: #eeeeee;
+    cursor: default;
+}

@@ -20,18 +20,21 @@ class Slider extends React.PureComponent {
         }
     }
 
+    handlePrevImg = () => this.handleImgChange("prev");
+    handleNextImg = () => this.handleImgChange("next");
+
     render() {
         return (
             <div className={`slider-${this.props.place}`}>
                 <button
                     className={`slider-button-${this.props.place}`}
-                    onClick={() => this.handleImgChange("prev")}
+                    onClick={this.handlePrevImg}
                 >
                     <img src={vectorLeft} alt="vector" />
                 </button>
                 <button
                     className={`slider-button-${this.props.place}`}
-                    onClick={() => this.handleImgChange("next")}
+                    onClick={this.handleNextImg}
                 >
                     <img src={vectorRight} alt="vector" />
                 </button>

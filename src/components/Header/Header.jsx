@@ -46,14 +46,7 @@ class Header extends React.PureComponent {
                             currencies={this.props.currencies}
                             setCurrency={this.props.setCurrency}
                             items={this.props.items}
-                            calculateTotalQuantity={
-                                this.props.calculateTotalQuantity
-                            }
                             btnRef={this.btnRef}
-                            calculateTotalAmount={
-                                this.props.calculateTotalAmount
-                            }
-                            findAmount={this.props.findAmount}
                             incrementQuantity={this.props.incrementQuantity}
                             decrementQuantity={this.props.decrementQuantity}
                         />

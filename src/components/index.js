@@ -1,5 +1,3 @@
-export { Button } from "./StyledComponents/Button.styled";
-export { Title } from "./StyledComponents/Title.styled";
 export { default as Header } from "./Header/Header";
 export { default as Navigation } from "./Navigation/Navigation";
 export { default as Actions } from "./Actions/Actions.jsx";

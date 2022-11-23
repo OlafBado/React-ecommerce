@@ -82,3 +82,23 @@
     margin-top: 32px;
     gap: 12px;
 }
+
+.cart-modal-button {
+    background: transparent;
+    min-height: 43px;
+    width: 140px;
+    border: 1px solid black;
+    color: #1d1f22;
+    font-family: "Raleway";
+    font-style: "normal";
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cart-modal-button--checkout {
+    color: #ffffff;
+    background-color: #5ece7b;
+    border: none;
+    cursor: default;
+}

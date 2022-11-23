@@ -1,5 +1,5 @@
 import React from "react";
-import { CurrencySwitcherContainer, CartModal, CartModalContainer } from "..";
+import { CurrencySwitcherContainer, CartModalContainer } from "..";
 import vectorDown from "../../assets/Vector-down.svg";
 import vectorUp from "../../assets/Vector-up.svg";
 import "./styles.css";
@@ -11,10 +11,6 @@ class Actions extends React.PureComponent {
         this.buttonRef = React.createRef();
         this.imgRef = React.createRef();
     }
-
-    // handleTotalQuantity = () =>
-    //     this.props.calculateTotalQuantity(this.props.items);
-
     handleCurrencySwitcher = () => this.props.openCurrencySwitcher();
 
     handleModal = () => this.props.openModal();
@@ -68,11 +64,6 @@ class Actions extends React.PureComponent {
                         incrementQuantity={this.props.incrementQuantity}
                         decrementQuantity={this.props.decrementQuantity}
                         items={this.props.items}
-                        findAmount={this.props.findAmount}
-                        calculateTotalQuantity={
-                            this.props.calculateTotalQuantity
-                        }
-                        calculateTotalAmount={this.props.calculateTotalAmount}
                         btnRef={this.props.btnRef}
                     />
                 ) : null}

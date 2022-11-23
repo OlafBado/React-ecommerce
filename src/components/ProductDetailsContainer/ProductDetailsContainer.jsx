@@ -127,7 +127,7 @@ export default graphql(getDetails, {
     options: (props) => {
         return {
             variables: {
-                id: window.location.pathname.split("/")[2],
+                id: window.location.pathname.split("/")[1],
             },
             fetchPolicy: "no-cache",
         };

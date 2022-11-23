@@ -20,14 +20,14 @@ class ChangeQuantity extends React.PureComponent {
         return (
             <>
                 <button
-                    style={{ background: "transparent", border: "none" }}
+                    className="change-quantity-button"
                     onClick={this.handleIncrementQuantity}
                 >
                     <img src={plus} alt="plus" />
                 </button>
                 <p>{this.props.quantity}</p>
                 <button
-                    style={{ background: "transparent", border: "none" }}
+                    className="change-quantity-button"
                     onClick={this.handleDecrementQuantity}
                 >
                     <img src={minus} alt="minus" />

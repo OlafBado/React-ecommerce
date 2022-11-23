@@ -18,7 +18,6 @@ class CartItem extends React.PureComponent {
             <div className="cart-item-container">
                 <div>
                     <CartInfo
-                        findAmount={this.props.findAmount}
                         currency={this.props.currency}
                         product={this.props}
                         place={"cart-page"}

@@ -37,12 +37,15 @@ class CategoriesDropdown extends React.PureComponent {
         return (
             <div className="media-dropdown">
                 <button
-                    onClick={() => this.closeDropdown()}
+                    onClick={this.closeDropdown}
                     className="media-dropdown-button"
                 ></button>
                 <div
-                    className="media-dropdown-menu"
-                    style={{ display: this.state.isOpen ? "block" : "none" }}
+                    className={
+                        this.state.isOpen
+                            ? "media-dropdown-menu"
+                            : "media-dropdown-menu--closed"
+                    }
                 >
                     {this.props ? (
                         <CategoriesContainer

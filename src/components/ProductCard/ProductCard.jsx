@@ -6,24 +6,23 @@ import { Link } from "react-router-dom";
 
 class ProductCard extends React.PureComponent {
     handleDefault = (e) => e.preventDefault();
-
     handleAddToCart = () => this.props.handlerAddToCart(this.props.product);
     handleSetId = () => this.props.setProductId(this.props.product.id);
     render() {
         return (
             <Link
                 onClick={this.handleSetId}
-                style={{ textDecoration: "none" }}
+                className="product-item-link"
                 key={this.props.product.id}
-                to={`/${this.props.category}/${this.props.product.id}`}
+                to={`/${this.props.product.id}`}
             >
                 <div className="products-item">
-                    <div className="products-item-img">
+                    <div className="products-item-img-container">
                         <img
-                            style={
+                            className={
                                 this.props.product.inStock
-                                    ? null
-                                    : { opacity: 0.5 }
+                                    ? "products-item-img"
+                                    : " products-item-img products-item-img--disabled"
                             }
                             src={this.props.product.gallery[0]}
                             alt="product"
@@ -45,11 +44,10 @@ class ProductCard extends React.PureComponent {
                         )}
                     </div>
                     <div
-                        className="products-item-description"
-                        style={
+                        className={
                             this.props.product.inStock
-                                ? { color: "#1D1F22" }
-                                : { color: "#8D8F9A" }
+                                ? "products-item-description"
+                                : "products-item-description--disabled"
                         }
                     >
                         <p className="products-item-description-name">
