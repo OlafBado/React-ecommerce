@@ -170,6 +170,14 @@
     .cart-item-image-slider img {
         max-height: 288px;
     }
+
+    .nav-link--active {
+        border: none;
+    }
+
+    .nav-link.nav-link--active > .header-navigation-button {
+        background-color: #eeeeee;
+    }
 }
 
 #portal {
