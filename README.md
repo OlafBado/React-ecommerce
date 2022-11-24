@@ -39,21 +39,3 @@ The page will reload when you make changes.
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
-
-## TODO
-
--   [/] Check all images and make sure the dimensions aren’t get broken (image 1) | solution: object-fit: contain
--   [/] The URL for the cart page must be “/cart”, sometimes it’s “/tech/cart” or “/clothes/cart” and so on | solution: fixed
--   [] installation steps must be in README
--   [/] If possible you need to use const as much as possible. Avoid let if you can. (image 2) | solution: changed Attributes, ProductDatails, Slider, App
--   [/] Improve naming. What X means? (image 3) | solution: fixed
--   [/] you can just return in this case. no need to declare a variable (image 4) | solution: fixed
--   [/] no need to write === false. you can omit it and write “ if (!this.state.isModalOpen) {}“ (image 5) | solution : fixed app
--   [/] Call setState only once if you need to change multiple state properties (image 6) | solution: fixed app
--   [/] instead of id: id. You can just write id (image 7) | solution: fixed app
--   [/] inverse your if logic everywhere. instead of this you can “if (!items) return;” ….. (image 8) | solution: changed ProductDetails, App:findAmount, incrementQuantity, decrementQuantity,
--   [/] Again, please, don’t use Component. Always use PureComponent | solution: add cartInfo, cartItem, cartPage, changeQuantity, currencySwitcher, header, outsideClick, productDetails, products, app
--   [/] Create Container components for business logic. Rendering components must only return JSX, it’s a best practice | solution: container for cartModal, categories, currencySwitcher, productDetails, products, attributes
--   [/] split your render methods (image 9) | solution: remove styled components
--   [/] avoid inline styles and the styles as props. Because it’s hard to rewrite such styles. if you have conditional styling, change the class name depending on the data. But keep your styles in css | solution: remove styled components and added classes insted inline styles
--   [/] thank you for using refs!
