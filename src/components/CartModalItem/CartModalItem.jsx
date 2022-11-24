@@ -2,7 +2,7 @@ import React from "react";
 import { CartInfo, ChangeQuantity } from "..";
 import "./styles.css";
 
-class CartModalItem extends React.Component {
+class CartModalItem extends React.PureComponent {
     render() {
         return (
             <>

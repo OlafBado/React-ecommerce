@@ -21,3 +21,4 @@ export { default as CurrencySwitcherSymbol } from "./CurrencySwitcherSymbol/Curr
 export { default as ProductDetailsContainer } from "./ProductDetailsContainer/ProductDetailsContainer";
 export { default as ProductDetailsImg } from "./ProductDetailsImg/ProductDetailsImg";
 export { default as ProductsContainer } from "./ProductsContainer/ProductsContainer";
+export { default as AttributesContainer } from "./AttributesContainer/AttributesContainer";

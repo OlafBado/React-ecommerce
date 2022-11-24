@@ -1,5 +1,5 @@
 import React from "react";
-import { Attributes } from "..";
+import { AttributesContainer } from "..";
 import "./styles.css";
 import { findAmount } from "../../services/calculate/amount";
 
@@ -17,7 +17,7 @@ class CartInfo extends React.PureComponent {
                     {this.props.currency}
                     {findAmount(this.props.product, this.props.currency)}
                 </p>
-                <Attributes
+                <AttributesContainer
                     place={this.props.place}
                     selectedOptions={this.props.product.selectedOptions}
                     attributes={this.props.product.attributes}

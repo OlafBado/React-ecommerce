@@ -1,6 +1,6 @@
 import React from "react";
 import { Markup } from "interweave";
-import { Attributes, Slider, ProductDetailsImg } from "..";
+import { Slider, ProductDetailsImg, AttributesContainer } from "..";
 import "./styles.css";
 import { findAmount } from "../../services/calculate/amount";
 
@@ -48,7 +48,7 @@ class ProductDetails extends React.Component {
                             <p className="details-name">
                                 {this.props.product.name}
                             </p>
-                            <Attributes
+                            <AttributesContainer
                                 selectedOptions={this.props.selectedOptions}
                                 attributes={this.props.product.attributes}
                                 variantChange={this.props.variantChange}

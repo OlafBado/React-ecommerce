@@ -2,31 +2,6 @@ import React from "react";
 import "./styles.css";
 
 class Attributes extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            selectedOptions: {},
-        };
-    }
-
-    static getDerivedStateFromProps(props, state) {
-        return { selectedOptions: props.selectedOptions };
-    }
-
-    ifExists = (attribute, value) => {
-        if (Object.keys(this.state.selectedOptions).length === 0) return;
-        const selectedOptions = this.state.selectedOptions.find((element) => {
-            if (element.attribute === attribute && element.value === value) {
-                return true;
-            } else {
-                return false;
-            }
-        });
-        return selectedOptions;
-    };
-
-    handleVariantChange = (e) => this.props.variantChange(e);
-
     render() {
         return (
             <>
@@ -52,12 +27,12 @@ class Attributes extends React.Component {
                                                 key={index}
                                                 onClick={
                                                     this.props.variantChange
-                                                        ? this
+                                                        ? this.props
                                                               .handleVariantChange
                                                         : null
                                                 }
                                                 className={
-                                                    this.ifExists(
+                                                    this.props.ifExists(
                                                         attribute.id,
                                                         item.value
                                                     )
@@ -79,7 +54,7 @@ class Attributes extends React.Component {
                                                 name={attribute.id}
                                                 value={item.value}
                                                 className={
-                                                    this.ifExists(
+                                                    this.props.ifExists(
                                                         attribute.id,
                                                         item.value
                                                     )
@@ -88,7 +63,7 @@ class Attributes extends React.Component {
                                                 }
                                                 onClick={
                                                     this.props.variantChange
-                                                        ? this
+                                                        ? this.props
                                                               .handleVariantChange
                                                         : null
                                                 }

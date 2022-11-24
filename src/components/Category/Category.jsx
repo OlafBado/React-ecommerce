@@ -1,13 +1,13 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./styles.css";
 
-const active = {
-    color: "#5ece7b",
-    borderBottom: "2px solid #5ece7b",
-};
-
 class Category extends React.PureComponent {
+    handleDropdown = () => {
+        this.props.closeDropdown();
+        this.props.changeCategory(this.props.name);
+    };
+    handleChangeCategory = () => this.props.changeCategory(this.props.name);
     render() {
         return (
             <Link
@@ -21,11 +21,8 @@ class Category extends React.PureComponent {
                 <button
                     onClick={
                         this.props.closeDropdown
-                            ? () => {
-                                  this.props.closeDropdown();
-                                  this.props.changeCategory(this.props.name);
-                              }
-                            : () => this.props.changeCategory(this.props.name)
+                            ? this.handleDropdown
+                            : this.handleChangeCategory
                     }
                     className="header-navigation-button"
                 >

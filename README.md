@@ -20,6 +20,26 @@ Visit this app by clicking on the link: https://react-ecommerce-shop-online.hero
 -   React
 -   GraphQL with Apollo client
 
+## Installation steps
+
+Navigate to project directory and run:
+
+### `npm install`
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
 ## TODO
 
 -   [/] Check all images and make sure the dimensions aren’t get broken (image 1) | solution: object-fit: contain
@@ -33,7 +53,7 @@ Visit this app by clicking on the link: https://react-ecommerce-shop-online.hero
 -   [/] instead of id: id. You can just write id (image 7) | solution: fixed app
 -   [/] inverse your if logic everywhere. instead of this you can “if (!items) return;” ….. (image 8) | solution: changed ProductDetails, App:findAmount, incrementQuantity, decrementQuantity,
 -   [/] Again, please, don’t use Component. Always use PureComponent | solution: add cartInfo, cartItem, cartPage, changeQuantity, currencySwitcher, header, outsideClick, productDetails, products, app
--   [/] Create Container components for business logic. Rendering components must only return JSX, it’s a best practice | solution: container for cartModal, categories, currencySwitcher, productDetails, products
+-   [/] Create Container components for business logic. Rendering components must only return JSX, it’s a best practice | solution: container for cartModal, categories, currencySwitcher, productDetails, products, attributes
 -   [/] split your render methods (image 9) | solution: remove styled components
 -   [/] avoid inline styles and the styles as props. Because it’s hard to rewrite such styles. if you have conditional styling, change the class name depending on the data. But keep your styles in css | solution: remove styled components and added classes insted inline styles
 -   [/] thank you for using refs!

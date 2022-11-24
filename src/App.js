@@ -263,52 +263,7 @@ class App extends React.PureComponent {
                         path="/"
                         element={<Navigate to={`/${this.state.title}`} />}
                     />
-                    {/* {this.props.data.categories &&
-                        this.props.data.categories.map((cat) => (
-                            <Route path={cat.name} key={cat.name}>
-                                <Route
-                                    index
-                                    element={
-                                        <ProductsContainer
-                                            category={cat.name}
-                                            currency={this.state.currency}
-                                            setProductId={this.setProductId}
-                                            handlerAddToCart={
-                                                this.handlerAddToCart
-                                            }
-                                        />
-                                    }
-                                />
-                                <Route
-                                    path={`/${cat.name}/:id`}
-                                    element={
-                                        <ProductDetailsContainer
-                                            currency={this.state.currency}
-                                            id={this.state.id}
-                                            handlerAddToCart={
-                                                this.handlerAddToCart
-                                            }
-                                            category={this.state.title}
-                                        />
-                                    }
-                                />
-                                <Route
-                                    path={`/${cat.name}/cart`}
-                                    element={
-                                        <CartPage
-                                            currency={this.state.currency}
-                                            incrementQuantity={
-                                                this.incrementQuantity
-                                            }
-                                            decrementQuantity={
-                                                this.decrementQuantity
-                                            }
-                                            items={this.state.cartItems}
-                                        />
-                                    }
-                                />
-                            </Route>
-                        ))} */}
+
                     <Route
                         path="/:id"
                         element={
